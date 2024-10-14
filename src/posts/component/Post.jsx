@@ -21,7 +21,7 @@ export default function Post({ post }) {
                         {post.creator}
                     </Avatar>
                 }
-                title={post.title}
+                title={post.album}
                 subheader={post.createdAt}
             />
             <CardMedia
@@ -31,6 +31,8 @@ export default function Post({ post }) {
                 alt={post.image.alt}
             />
             <CardContent>
+                <Typography>{post.album}</Typography>
+                <Typography>{post.artist}</Typography>
                 <Typography sx={{ fontSize: '2rem' }}>{post.title}</Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                     {post.subtitle}
