@@ -23,7 +23,7 @@ export default function CommentsComponent({ post }) {
                 </AccordionSummary>
                 <AccordionDetails>
                     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.defult' }}>
-                        {post.comments.map((comment) => <CommentContentComponent comment={comment} />)}
+                        {post.comments.map((comment) => <CommentContentComponent comment={comment} key={comment._id} />)}
                     </List>
                 </AccordionDetails>
             </Accordion>
