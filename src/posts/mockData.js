@@ -15,11 +15,43 @@ const postsMock = [
         artist: "J.cole",
         album: "2014 Forest Hills Drive",
         createdAt: "2024 -09 - 30T09: 49: 41.457+00:00",
-        creator: 'JanivDemagniv',
+        creatorName: 'JanivDemagniv',
         image: {
             url: "./2014ForestHillsDrive.jpg",
             alt: '2014ForestHillsDrive'
-        }
+        },
+        comments: [
+            {
+                content: "love the articale!",
+                creator: {
+                    _id: '670cfa226d111a162d26a462',
+                    name: "tunaparkinglot",
+                    image: {
+                        url: "https://upload.wikimedia.org/wikipedia/commons/0/07/%d7%90%d7%99%d7%aa%d7%99_%d7%96%d7%91%d7%95%d7%9c%d7%95%d7%9f_%d7%98%d7%95%d7%a0%d7%94.jpg",
+                        alt: 'profilePic'
+                    }
+                },
+                post: '670cfc6a13aa916ed72d72f1',
+                createdAt: '2024-10-14T11:13:26.082+00:00',
+                likes: 0,
+                _id: '670cfd5d55d49926cb2c0236'
+            },
+            {
+                content: "love the articale!",
+                creator: {
+                    _id: '670cfa226d111a162d26a462',
+                    name: "tunaparkinglot",
+                    image: {
+                        url: "https://upload.wikimedia.org/wikipedia/commons/0/07/%d7%90%d7%99%d7%aa%d7%99_%d7%96%d7%91%d7%95%d7%9c%d7%95%d7%9f_%d7%98%d7%95%d7%a0%d7%94.jpg",
+                        alt: 'profilePic'
+                    }
+                },
+                post: '670cfc6a13aa916ed72d72f1',
+                createdAt: '2024-10-14T11:13:26.082+00:00',
+                likes: 0,
+                _id: '670cfd5d55d49926cb2c0236'
+            },
+        ]
     },
     {
         _id: "66fabbd05a7b818b4eb1aa2a",
@@ -29,11 +61,43 @@ const postsMock = [
         artist: "Eminem",
         album: "The Eminem's Show",
         createdAt: "2024 -09 - 30T09: 49: 41.457+00:00",
-        creator: 'JanivDemagniv',
+        creatorName: 'JanivDemagniv',
         image: {
             url: "./The_Eminem_Show.jpg",
             alt: 'The_Eminem_Show'
-        }
+        },
+        comments: [
+            {
+                content: "love the articale!, this is an amazing album, and I love what you wrote about it",
+                creator: {
+                    _id: '670cfa226d111a162d26a462',
+                    name: "tunaparkinglot",
+                    image: {
+                        url: "https://upload.wikimedia.org/wikipedia/commons/0/07/%d7%90%d7%99%d7%aa%d7%99_%d7%96%d7%91%d7%95%d7%9c%d7%95%d7%9f_%d7%98%d7%95%d7%a0%d7%94.jpg",
+                        alt: 'profilePic'
+                    }
+                },
+                post: '670cfc6a13aa916ed72d72f1',
+                createdAt: '2024-10-14T11:13:26.082+00:00',
+                likes: 0,
+                _id: '670cfd5d55d49926cb2c0236'
+            },
+            {
+                content: "love the articale!",
+                creator: {
+                    _id: '670cfa226d111a162d26a462',
+                    name: "tunaparkinglot",
+                    image: {
+                        url: "https://upload.wikimedia.org/wikipedia/commons/0/07/%d7%90%d7%99%d7%aa%d7%99_%d7%96%d7%91%d7%95%d7%9c%d7%95%d7%9f_%d7%98%d7%95%d7%a0%d7%94.jpg",
+                        alt: 'profilePic'
+                    }
+                },
+                post: '670cfc6a13aa916ed72d72f1',
+                createdAt: '2024-10-14T11:13:26.082+00:00',
+                likes: 0,
+                _id: '670cfd5d55d49926cb2c0236'
+            },
+        ]
     },
     {
         _id: "66fabbd05a7b818b4eb1bb2b",
@@ -43,11 +107,43 @@ const postsMock = [
         artist: "Kanye West",
         album: "The Collage Dropout",
         createdAt: "2024 -09 - 30T09: 49: 41.457+00:00",
-        creator: 'JanivDemagniv',
+        creatorName: 'JanivDemagniv',
         image: {
             url: "./Kanyewest_collegedropout.jpg",
             alt: 'The Collage DropOut'
-        }
+        },
+        comments: [
+            {
+                content: "love the articale!",
+                creator: {
+                    _id: '670cfa226d111a162d26a462',
+                    name: "tunaparkinglot",
+                    image: {
+                        url: "https://upload.wikimedia.org/wikipedia/commons/0/07/%d7%90%d7%99%d7%aa%d7%99_%d7%96%d7%91%d7%95%d7%9c%d7%95%d7%9f_%d7%98%d7%95%d7%a0%d7%94.jpg",
+                        alt: 'profilePic'
+                    }
+                },
+                post: '670cfc6a13aa916ed72d72f1',
+                createdAt: '2024-10-14T11:13:26.082+00:00',
+                likes: 0,
+                _id: '670cfd5d55d49926cb2c0236'
+            },
+            {
+                content: "love the articale!",
+                creator: {
+                    _id: '670cfa226d111a162d26a462',
+                    name: "tunaparkinglot",
+                    image: {
+                        url: "https://upload.wikimedia.org/wikipedia/commons/0/07/%d7%90%d7%99%d7%aa%d7%99_%d7%96%d7%91%d7%95%d7%9c%d7%95%d7%9f_%d7%98%d7%95%d7%a0%d7%94.jpg",
+                        alt: 'profilePic'
+                    }
+                },
+                post: '670cfc6a13aa916ed72d72f1',
+                createdAt: '2024-10-14T11:13:26.082+00:00',
+                likes: 0,
+                _id: '670cfd5d55d49926cb2c0236'
+            },
+        ]
     }
 ]
 

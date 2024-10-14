@@ -26,8 +26,8 @@ export default function CustomTheme({ children }) {
                 secondary: '#f5f4f3'
             },
             background: {
-                paper: '#4A6572',
-                default: '#232F34'
+                paper: '#232F34',
+                default: '#4A6572'
             }
         },
     });
