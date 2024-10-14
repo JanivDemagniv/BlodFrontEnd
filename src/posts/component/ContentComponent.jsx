@@ -14,7 +14,7 @@ export default function ContentComponent({ post }) {
                 <Divider />
             </CardContent>
             <CardContent>
-                <Paper sx={{ marginBottom: 2 }}>
+                <Paper sx={{ marginBottom: 2, backgroundColor: '#88adbf', color: '#212121', p: '2%', fontFamily: 'Roboto', textAlign: 'justify' }}>
                     {post.content}
                 </Paper>
                 <Divider />

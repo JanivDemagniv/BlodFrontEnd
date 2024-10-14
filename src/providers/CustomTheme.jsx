@@ -27,6 +27,7 @@ export default function CustomTheme({ children }) {
             },
             background: {
                 paper: '#4A6572',
+                default: '#232F34'
             }
         },
     });
