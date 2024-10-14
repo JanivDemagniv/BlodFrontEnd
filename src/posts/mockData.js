@@ -80,7 +80,7 @@ const postsMock = [
                 post: '670cfc6a13aa916ed72d72f1',
                 createdAt: '2024-10-14T11:13:26.082+00:00',
                 likes: 0,
-                _id: '670cfd5d55d49926cb2c0236'
+                _id: '670cfd5d55d49926cb2c023677'
             },
             {
                 content: "love the articale!",
@@ -95,7 +95,7 @@ const postsMock = [
                 post: '670cfc6a13aa916ed72d72f1',
                 createdAt: '2024-10-14T11:13:26.082+00:00',
                 likes: 0,
-                _id: '670cfd5d55d49926cb2c0236'
+                _id: '670cfd5d55d49926cb2c023666'
             },
         ]
     },
@@ -126,7 +126,7 @@ const postsMock = [
                 post: '670cfc6a13aa916ed72d72f1',
                 createdAt: '2024-10-14T11:13:26.082+00:00',
                 likes: 0,
-                _id: '670cfd5d55d49926cb2c0236'
+                _id: '670cfd5d55d49926cb2c023655'
             },
             {
                 content: "love the articale!",
@@ -141,7 +141,7 @@ const postsMock = [
                 post: '670cfc6a13aa916ed72d72f1',
                 createdAt: '2024-10-14T11:13:26.082+00:00',
                 likes: 0,
-                _id: '670cfd5d55d49926cb2c0236'
+                _id: '670cfd5d55d49926cb2c023644'
             },
         ]
     }
