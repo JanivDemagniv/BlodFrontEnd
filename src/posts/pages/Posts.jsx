@@ -1,10 +1,10 @@
 import React from 'react'
-import Post from '../component/Post'
+import PostComponent from '../component/PostComponent'
 
 export default function Posts({ posts }) {
     return (
         <div>
-            {posts.map((post) => <Post post={post} />)}
+            {posts.map((post) => <PostComponent post={post} key={post._id} />)}
         </div>
     )
 }
