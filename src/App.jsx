@@ -4,6 +4,7 @@ import Layout from './layout/Layout'
 import postsMock from './posts/mockData'
 import Posts from './posts/pages/Posts'
 import CustomTheme from './providers/CustomTheme'
+import Post from './posts/pages/Post'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <CustomTheme>
           <Layout>
             <Posts posts={postsMock} />
+            {/* <Post post={postsMock[0]} /> */}
           </Layout>
         </CustomTheme>
       </BrowserRouter>

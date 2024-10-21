@@ -1,7 +1,12 @@
-import { CardContent, Divider, Paper, Typography } from '@mui/material'
-import React from 'react'
+import { Button, CardContent, Divider, Paper, Typography } from '@mui/material'
+import React, { useState } from 'react'
 
 export default function ContentComponent({ post }) {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const toggleMore = () => {
+        setIsExpanded(!isExpanded);
+    }
+
     return (
         <>
             <CardContent>
@@ -15,7 +20,8 @@ export default function ContentComponent({ post }) {
             </CardContent>
             <CardContent>
                 <Paper sx={{ marginBottom: 2, backgroundColor: '#88adbf', color: '#212121', p: '2%', fontFamily: 'Roboto', textAlign: 'justify' }}>
-                    {post.content}
+                    {isExpanded ? post.content : `${post.content.substring(0, 300)}...`}
+                    <Button onClick={toggleMore}>{isExpanded ? 'Show Less' : 'Read More'}</Button>
                 </Paper>
                 <Divider />
             </CardContent>
