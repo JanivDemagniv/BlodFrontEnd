@@ -5,7 +5,7 @@ import Logo from '../logo/Logo'
 
 export default function LeftNavBar() {
     return (
-        <Box>
+        <Box sx={{ display: 'flex' }}>
             <LogoIcon />
             <Logo webTitle='Music Lovers' />
         </Box>
