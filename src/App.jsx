@@ -1,3 +1,4 @@
+import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 import Layout from './layout/Layout'
 import postsMock from './posts/mockData'
@@ -8,11 +9,13 @@ function App() {
 
   return (
     <>
-      <CustomTheme>
-        <Layout>
-          <Posts posts={postsMock} />
-        </Layout>
-      </CustomTheme>
+      <BrowserRouter>
+        <CustomTheme>
+          <Layout>
+            <Posts posts={postsMock} />
+          </Layout>
+        </CustomTheme>
+      </BrowserRouter>
     </>
   )
 }
