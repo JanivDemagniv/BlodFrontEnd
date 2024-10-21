@@ -30,6 +30,11 @@ export default function CustomTheme({ children }) {
                 default: '#4A6572'
             }
         },
+        typography: {
+            button: {
+                textTransform: 'none'
+            }
+        }
     });
 
 
