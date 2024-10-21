@@ -15,7 +15,7 @@ export default function Post({ post }) {
                                 {post.creatorName}
                             </Avatar>
                         }
-                        title={post.album}
+                        title={post.creatorName}
                         subheader={post.createdAt}
                     />
                 </Box>

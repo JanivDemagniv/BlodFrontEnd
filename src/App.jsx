@@ -13,8 +13,8 @@ function App() {
       <BrowserRouter>
         <CustomTheme>
           <Layout>
-            <Posts posts={postsMock} />
-            {/* <Post post={postsMock[0]} /> */}
+            {/* <Posts posts={postsMock} /> */}
+            <Post post={postsMock[0]} />
           </Layout>
         </CustomTheme>
       </BrowserRouter>
