@@ -5,7 +5,7 @@ import LeftNavComponent from './leftNav/LeftNavComponent'
 
 export default function Navbar() {
     return (
-        <AppBar position='sticky'>
+        <AppBar position='sticky' color="primary" elevation={10}>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <LeftNavComponent />
                 <ProfileManu />

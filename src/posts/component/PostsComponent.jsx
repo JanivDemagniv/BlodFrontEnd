@@ -9,7 +9,7 @@ export default function PostComponent({ post }) {
 
 
     return (
-        <Card sx={{ maxWidth: '90%', m: '20px auto' }}>
+        <Card sx={{ maxWidth: { xs: '100vw', md: '55vw' }, m: '20px auto' }}>
             <HeaderComponent post={post} />
             <ContentComponent post={post} />
             {post.comments.length < 0 ? <></> : <CommentsComponent post={post} />}

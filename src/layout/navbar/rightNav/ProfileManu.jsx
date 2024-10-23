@@ -12,10 +12,10 @@ export default function ProfileManu() {
     };
 
     return (
-        <Box sx={{ flexGrow: 0 }}>
+        <Box>
             <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <IconButton onClick={handleOpenUserMenu} >
+                    <Avatar alt="blabla" src="/static/images/avatar/2.jpg" />
                 </IconButton>
             </Tooltip>
             <Menu
@@ -27,6 +27,7 @@ export default function ProfileManu() {
                     horizontal: 'right',
                 }}
                 keepMounted
+                disableScrollLock
                 transformOrigin={{
                     vertical: 'top',
                     horizontal: 'right',

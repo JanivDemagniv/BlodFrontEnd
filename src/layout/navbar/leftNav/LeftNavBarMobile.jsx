@@ -32,6 +32,7 @@ export default function LeftNavBarMobile() {
                     horizontal: 'left',
                 }}
                 keepMounted
+                disableScrollLock
                 transformOrigin={{
                     vertical: 'top',
                     horizontal: 'left',
