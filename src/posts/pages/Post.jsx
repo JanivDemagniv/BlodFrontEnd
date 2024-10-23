@@ -1,9 +1,12 @@
 import { Avatar, Box, CardHeader, Paper, Typography } from '@mui/material'
 import React from 'react'
-import CommentsComponent from '../component/CommentsComponent'
+import CommentsComponent from '../component/CommentsComponent';
+import postsMock from '../mockData';
+
+let post = postsMock[0]
 
 
-export default function Post({ post }) {
+export default function Post() {
     return (
         <Box sx={{ backgroundColor: '#F9AA33', p: '2%', borderRadius: '2%' }}>
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: '2%' }}>
