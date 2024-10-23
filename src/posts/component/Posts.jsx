@@ -1,6 +1,6 @@
 import React from 'react'
-import PostsComponent from '../posts/component/PostsComponent'
-import postsMock from '../posts/mockData'
+import PostsComponent from './PostsComponent'
+import postsMock from '../mockData'
 import { Box } from '@mui/material';
 
 let posts = postsMock;
