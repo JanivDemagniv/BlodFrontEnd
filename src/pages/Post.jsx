@@ -1,7 +1,7 @@
 import { Avatar, Box, CardHeader, Paper, Typography } from '@mui/material'
 import React from 'react'
-import CommentsComponent from '../component/CommentsComponent';
-import postsMock from '../mockData';
+import CommentsComponent from '../posts/component/CommentsComponent';
+import postsMock from '../posts/mockData';
 
 let post = postsMock[0]
 
