@@ -3,7 +3,6 @@ const ROUTES = {
     ABOUT: '/about',
     POSTS: '/posts',
     POSTINFO: '/post',
-
 }
 
 export default ROUTES
