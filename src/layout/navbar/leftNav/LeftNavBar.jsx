@@ -8,9 +8,7 @@ import ROUTES from '../../../routes/routesModule'
 export default function LeftNavBar() {
 
     return (
-        <Box sx={{ display: 'flex' }}>
-            <LogoIcon />
-            <Logo webTitle='Music Lovers' />
+        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <NavBarItem to={ROUTES.ROOT}>Home</NavBarItem>
             <NavBarItem to={ROUTES.ABOUT}>About Us</NavBarItem>
             <NavBarItem to={ROUTES.POSTS}>Posts</NavBarItem>
