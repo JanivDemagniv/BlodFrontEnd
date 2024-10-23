@@ -2,8 +2,6 @@ import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip, Typography } from '@m
 import React from 'react'
 import { useState } from 'react'
 
-const settings = ['profile', 'my posts', 'login', 'logout']
-
 export default function ProfileManu() {
     const [anchorElUser, setAnchorElUser] = useState(null);
     const handleOpenUserMenu = (event) => {
