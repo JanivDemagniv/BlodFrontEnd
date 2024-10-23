@@ -1,11 +1,10 @@
-import { Box, List, ListItem, ListItemText, Typography } from '@mui/material'
+import { Box, Container, List, ListItem, ListItemText, Typography } from '@mui/material'
 import React from 'react'
 
 export default function Footer() {
     return (
-        <Box sx={{ bgcolor: '#232F34', }}>
-            <Box sx={{
-                width: '100%',
+        <Box sx={{ bgcolor: '#232F34', width: '100%' }}>
+            <Container sx={{
                 minHeight: '20vh',
                 p: "2% 20%",
                 display: 'flex',
@@ -34,7 +33,7 @@ export default function Footer() {
                         </ListItemText>
                     </ListItem>
                 </List>
-            </Box>
+            </Container>
             <Box>
                 <Typography sx={{ display: 'flex', justifyContent: 'flex-end', p: '0 2%', color: '#fff' }}>Yaniv Romem</Typography>
             </Box>

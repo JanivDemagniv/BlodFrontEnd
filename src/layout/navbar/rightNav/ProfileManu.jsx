@@ -1,4 +1,4 @@
-import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip, Typography } from '@mui/material';
+import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 import React from 'react'
 import { useState } from 'react'
 
@@ -20,7 +20,6 @@ export default function ProfileManu() {
             </Tooltip>
             <Menu
                 sx={{ mt: '45px' }}
-                id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
                     vertical: 'top',
