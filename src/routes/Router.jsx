@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import ROUTES from './routesModule'
-import Posts from '../pages/Posts'
-import Post from '../pages/Post'
 import Error from '../pages/Error'
 import About from '../pages/About'
+import Posts from '../posts/component/Posts'
+import Post from '../posts/component/Post'
 
 export default function Router() {
     return (
