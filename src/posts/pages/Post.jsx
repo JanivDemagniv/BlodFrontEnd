@@ -5,7 +5,7 @@ import CommentsComponent from '../component/CommentsComponent'
 
 export default function Post({ post }) {
     return (
-        <Box>
+        <Box sx={{ backgroundColor: '#F9AA33', p: '2%', borderRadius: '2%' }}>
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: '2%' }}>
                 <Box>
                     <Box component='img' src='2014ForestHillsDrive.jpg' sx={{ maxWidth: { xs: '150px', md: '400px' }, height: { xs: '150px', md: '400px' }, borderRadius: '5%' }} />
