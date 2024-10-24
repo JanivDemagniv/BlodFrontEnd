@@ -1,6 +1,8 @@
 import { Box, IconButton, Menu, MenuItem } from '@mui/material';
 import React, { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
+import NavBarItem from '../../../routes/components/NavBarItem';
+import ROUTES from '../../../routes/routesModule';
 
 
 export default function LeftNavBarMobile() {
@@ -41,7 +43,9 @@ export default function LeftNavBarMobile() {
                 onClose={handleCloseNavMenu}
                 sx={{ display: { xs: 'block', md: 'none' } }}
             >
-                <MenuItem>Home</MenuItem>
+                <MenuItem><NavBarItem to={ROUTES.ROOT}>Home</NavBarItem></MenuItem>
+                <MenuItem><NavBarItem to={ROUTES.ABOUT}>About Us</NavBarItem></MenuItem>
+                <MenuItem><NavBarItem to={ROUTES.POSTS}>Posts</NavBarItem></MenuItem>
             </Menu>
         </Box>
     )

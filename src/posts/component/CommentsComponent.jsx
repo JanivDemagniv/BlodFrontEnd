@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, CardContent, TextField } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary, Avatar, Box, Button, CardContent, TextField } from '@mui/material'
 import React from 'react'
 import List from '@mui/material/List';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -19,8 +19,10 @@ export default function CommentsComponent({ post }) {
                     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.defult' }}>
                         {post.comments.map((comment) => <CommentContentComponent comment={comment} key={comment._id} />)}
                     </List>
-                    <Box>
-                        <TextField multiline minRows='2' variant='filled' sx={{ width: '100%' }} />
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '1.5%' }}>
+                        <Avatar sx={{ alignSelf: 'center' }} />
+                        <TextField multiline minRows='2' variant='filled' sx={{ flexGrow: '1 ', minWidth: '50%' }} />
+                        <Button sx={{ flexGrow: '1', minWidth: '50%' }}>Send</Button>
                     </Box>
                 </AccordionDetails>
             </Accordion>
