@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, CardContent, Paper } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary, Box, CardContent, TextField } from '@mui/material'
 import React from 'react'
 import List from '@mui/material/List';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -19,6 +19,9 @@ export default function CommentsComponent({ post }) {
                     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.defult' }}>
                         {post.comments.map((comment) => <CommentContentComponent comment={comment} key={comment._id} />)}
                     </List>
+                    <Box>
+                        <TextField multiline minRows='2' variant='filled' sx={{ width: '100%' }} />
+                    </Box>
                 </AccordionDetails>
             </Accordion>
 
