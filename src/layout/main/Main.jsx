@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Main({ children }) {
     return (
-        <Container>
+        <Container sx={{ minHeight: '50vh' }}>
             {children}
         </Container>
     )

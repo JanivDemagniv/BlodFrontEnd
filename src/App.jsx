@@ -4,6 +4,7 @@ import 'normalize.css';
 import Layout from './layout/Layout'
 import CustomTheme from './providers/CustomTheme'
 import Router from './routes/Router'
+import SnackBarProvider from './providers/SnackBarProvider';
 
 function App() {
 
@@ -11,9 +12,11 @@ function App() {
     <>
       <BrowserRouter>
         <CustomTheme>
-          <Layout>
-            <Router />
-          </Layout>
+          <SnackBarProvider>
+            <Layout>
+              <Router />
+            </Layout>
+          </SnackBarProvider>
         </CustomTheme>
       </BrowserRouter>
     </>
