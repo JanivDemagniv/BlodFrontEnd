@@ -22,8 +22,8 @@ export default function Post() {
     if (postDetailsData && postDetailsData.length == 0 || postDetailsData == undefined) return <Typography>There is no posts to display</Typography>
     if (postDetailsData) return (
         <Box sx={{ p: '2%', borderRadius: '2%' }}>
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: '2%' }}>
-                <Box sx={{ backgroundColor: 'blue' }}>
+            <Box sx={{ pl: '15px', display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: '2%' }}>
+                <Box>
                     <Box component='img' src={postDetailsData.image.url} sx={{ maxWidth: { xs: '150px', md: '400px' }, height: { xs: '150px', md: '400px' }, borderRadius: '5%' }} />
                     <CardHeader
                         avatar={

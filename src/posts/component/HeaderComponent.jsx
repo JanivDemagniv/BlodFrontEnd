@@ -7,11 +7,9 @@ export default function HeaderComponent({ post }) {
         <>
             <CardHeader
                 avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                        {post.creatorName}
-                    </Avatar>
+                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" src={post.creator.image.url} />
                 }
-                title={post.album}
+                title={post.creator.name}
                 subheader={post.createdAt}
             />
             <CardMedia
