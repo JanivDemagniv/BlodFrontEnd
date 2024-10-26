@@ -6,10 +6,12 @@ import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
 import { capitalizeWords } from '../../helpers/generalFunctions';
 import PageHeader from '../../components/PageHeader';
+import { useTheme } from '../../providers/CustomTheme';
 
 export default function Post() {
     const { id } = useParams()
     const { isLoading, error, handleGetPostById, postDetailsData } = usePosts();
+    const { isDark } = useTheme();
 
     useEffect(() => {
         handleGetPostById(id)
@@ -24,7 +26,7 @@ export default function Post() {
             <Box sx={{ pl: '15px', display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: '2%' }}>
                 <Box>
                     <Box component='img' src={postDetailsData.image.url} sx={{ maxWidth: { xs: '150px', md: '400px' }, height: { xs: '150px', md: '400px' }, borderRadius: '5%' }} />
-                    <CardHeader
+                    <CardHeader sx={{ bgcolor: isDark ? '#90A4AE' : '#ff9800', borderRadius: '10px' }}
                         avatar={
                             <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe" src={postDetailsData.creator.image.url} />
                         }
