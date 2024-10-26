@@ -1,9 +1,12 @@
 import { Box, Container, List, ListItem, ListItemText, Typography } from '@mui/material'
 import React from 'react'
+import { useTheme } from '../../providers/CustomTheme'
 
 export default function Footer() {
+    const { isDark } = useTheme();
+
     return (
-        <Box sx={{ bgcolor: '#232F34', width: '100%' }}>
+        <Box sx={{ bgcolor: isDark ? '#232F34' : '#ed6c02', width: '100%' }}>
             <Container sx={{
                 minHeight: '20vh',
                 p: "2% 20%",

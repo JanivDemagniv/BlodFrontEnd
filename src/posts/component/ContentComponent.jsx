@@ -1,8 +1,10 @@
 import { Button, CardContent, Divider, Paper, Typography } from '@mui/material'
 import React, { useState } from 'react'
+import { useTheme } from '../../providers/CustomTheme';
 
 export default function ContentComponent({ post }) {
     const [isExpanded, setIsExpanded] = useState(false);
+    const { isDark } = useTheme();
     const toggleMore = () => {
         setIsExpanded(!isExpanded);
     }
@@ -19,7 +21,7 @@ export default function ContentComponent({ post }) {
                 <Divider />
             </CardContent>
             <CardContent>
-                <Paper sx={{ marginBottom: 2, backgroundColor: '#88adbf', color: '#212121', p: '2%', fontFamily: 'Roboto', textAlign: 'justify' }}>
+                <Paper sx={{ marginBottom: 2, bgcolor: isDark ? '#4A6572' : '#FDD835', color: '#212121', p: '2%', fontFamily: 'Roboto', textAlign: 'justify' }}>
                     {isExpanded ? post.content : `${post.content.substring(0, 300)}...`}
                     <Button onClick={toggleMore}>{isExpanded ? 'Show Less' : 'Read More'}</Button>
                 </Paper>

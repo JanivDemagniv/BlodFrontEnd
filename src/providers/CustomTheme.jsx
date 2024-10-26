@@ -13,21 +13,18 @@ export default function CustomTheme({ children }) {
         palette: {
             mode: isDark ? "dark" : "light",
             primary: {
-                main: '#344955',
-                light: '#4A6572',
-                dark: '#232F34',
+                main: isDark ? '#607D8B' : '#ed6c02',
+                light: isDark ? '#90A4AE' : '#ff9800',
+                dark: isDark ? '#263238' : '#e65100',
                 contrastText: '#fff',
-            },
-            secondary: {
-                main: '#F9AA33'
             },
             text: {
                 primary: '#f1f1f1',
                 secondary: '#f5f4f3'
             },
             background: {
-                paper: '#232F34',
-                default: '#4A6572'
+                paper: isDark ? '#263238' : '#ff9800',
+                default: '#ed6c02'
             }
         },
         typography: {
