@@ -5,6 +5,7 @@ import Layout from './layout/Layout'
 import CustomTheme from './providers/CustomTheme'
 import Router from './routes/Router'
 import SnackBarProvider from './providers/SnackBarProvider';
+import UserProvider from './users/provider/UserProvider';
 
 function App() {
 
@@ -13,9 +14,11 @@ function App() {
       <BrowserRouter>
         <CustomTheme>
           <SnackBarProvider>
-            <Layout>
-              <Router />
-            </Layout>
+            <UserProvider>
+              <Layout>
+                <Router />
+              </Layout>
+            </UserProvider>
           </SnackBarProvider>
         </CustomTheme>
       </BrowserRouter>

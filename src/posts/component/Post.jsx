@@ -5,6 +5,7 @@ import usePosts from '../hooks/usePosts';
 import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
 import { capitalizeWords } from '../../helpers/generalFunctions';
+import PageHeader from '../../components/PageHeader';
 
 export default function Post() {
     const { id } = useParams()
@@ -19,6 +20,7 @@ export default function Post() {
     if (postDetailsData && postDetailsData.length == 0 || postDetailsData == undefined) return <Typography>There is no posts to display</Typography>
     if (postDetailsData) return (
         <Box sx={{ p: '2%', borderRadius: '2%' }}>
+            <PageHeader title={postDetailsData.title} subtitle={postDetailsData.subtitle} />
             <Box sx={{ pl: '15px', display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: '2%' }}>
                 <Box>
                     <Box component='img' src={postDetailsData.image.url} sx={{ maxWidth: { xs: '150px', md: '400px' }, height: { xs: '150px', md: '400px' }, borderRadius: '5%' }} />
@@ -26,7 +28,7 @@ export default function Post() {
                         avatar={
                             <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe" src={postDetailsData.creator.image.url} />
                         }
-                        title={postDetailsData.creator.name}
+                        title={capitalizeWords(postDetailsData.creator.name)}
                         subheader={postDetailsData.createdAt}
                     />
                 </Box>

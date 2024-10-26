@@ -31,7 +31,7 @@ export default function Posts() {
         <Box>
             <PageHeader title='Posts' subtitle='All posts at one place' />
             {currentItem.map((post) => <PostsComponent post={post} key={post._id} />)}
-            <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', p: '20px' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', p: '20px' }}>
                 <Pagination
                     color="primary"
                     variant="outlined"
