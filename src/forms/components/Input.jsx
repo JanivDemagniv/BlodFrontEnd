@@ -1,12 +1,11 @@
 import { Grid2, TextField } from '@mui/material'
 import React from 'react'
-import { capitalizeWords } from '../../helpers/generalFunctions'
 
 const Input = ({
     variant = 'outlined',
     type = 'text',
     name,
-    date,
+    data,
     label,
     required = true,
     error,
@@ -17,7 +16,7 @@ const Input = ({
         <Grid2 item xs={12} {...rest}>
             <TextField
                 variant={variant}
-                label={capitalizeWords(label)}
+                label={label}
                 type={type}
                 id={name}
                 name={name}
