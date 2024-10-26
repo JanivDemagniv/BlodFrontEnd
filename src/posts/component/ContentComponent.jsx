@@ -1,6 +1,7 @@
 import { Button, CardContent, Divider, Paper, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useTheme } from '../../providers/CustomTheme';
+import { capitalizeWords } from '../../helpers/generalFunctions';
 
 export default function ContentComponent({ post }) {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -12,11 +13,11 @@ export default function ContentComponent({ post }) {
     return (
         <>
             <CardContent>
-                <Typography>{post.album}</Typography>
-                <Typography>{post.artist}</Typography>
-                <Typography sx={{ fontSize: '2rem' }}>{post.title}</Typography>
+                <Typography>{capitalizeWords(post.album)}</Typography>
+                <Typography>{capitalizeWords(post.artist)}</Typography>
+                <Typography sx={{ fontSize: '2rem' }}>{capitalizeWords(post.title)}</Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    {post.subtitle}
+                    {capitalizeWords(post.subtitle)}
                 </Typography>
                 <Divider />
             </CardContent>

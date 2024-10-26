@@ -4,6 +4,7 @@ import CommentsComponent from './CommentsComponent';
 import usePosts from '../hooks/usePosts';
 import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
+import { capitalizeWords } from '../../helpers/generalFunctions';
 
 export default function Post() {
     const { id } = useParams()
@@ -30,10 +31,10 @@ export default function Post() {
                     />
                 </Box>
                 <Box sx={{ p: '2%' }}>
-                    <Typography variant='h2' sx={{ p: '1%', fontSize: '1.5rem' }}>{postDetailsData.album}</Typography>
-                    <Typography variant='h6' sx={{ fontSize: '1rem' }}>{postDetailsData.artist}</Typography>
-                    <Typography variant='h6' sx={{ fontSize: '1rem' }}>{postDetailsData.title}</Typography>
-                    <Typography variant='h6' sx={{ fontSize: '1rem' }}>{postDetailsData.subtitle}</Typography>
+                    <Typography variant='h2' sx={{ fontSize: '1.5rem' }}>{capitalizeWords(postDetailsData.album)}</Typography>
+                    <Typography variant='h6' sx={{ fontSize: '1rem' }}>{capitalizeWords(postDetailsData.artist)}</Typography>
+                    <Typography variant='h6' sx={{ fontSize: '1rem' }}>{capitalizeWords(postDetailsData.title)}</Typography>
+                    <Typography variant='h6' sx={{ fontSize: '1rem' }}>{capitalizeWords(postDetailsData.subtitle)}</Typography>
                     <Paper sx={{ p: '2%', textAlign: 'justify' }}>
                         {postDetailsData.content}
                     </Paper>
