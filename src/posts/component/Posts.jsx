@@ -16,7 +16,8 @@ export default function Posts() {
     const currentItem = postsData.slice(indexOfFirstItem, indexOfLastItem);
 
     const handlePageChange = (event, value) => {
-        setCurrentPage(value)
+        setCurrentPage(value);
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
     useEffect(() => {
