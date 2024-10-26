@@ -6,7 +6,7 @@ export default function Footer() {
     const { isDark } = useTheme();
 
     return (
-        <Box sx={{ bgcolor: isDark ? '#232F34' : '#ed6c02', width: '100%' }}>
+        <Box boxShadow={5} component='footer' sx={{ bgcolor: isDark ? '#3A444A' : '#ed6c02', width: '100%' }}>
             <Container sx={{
                 minHeight: '20vh',
                 p: "2% 20%",

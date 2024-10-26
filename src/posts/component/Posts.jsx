@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react'
 import PostsComponent from './PostsComponent'
-import postsMock from '../mockData'
 import { Box, Typography } from '@mui/material';
 import PageHeader from '../../components/PageHeader';
 import usePosts from '../hooks/usePosts';
 import Spinner from '../../components/Spinner';
 import Error from '../../components/Error';
-
-let posts = postsMock;
 
 export default function Posts() {
     const { postsData, isLoading, error, handleGetAllPosts } = usePosts();

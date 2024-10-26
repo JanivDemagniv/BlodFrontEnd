@@ -1,13 +1,9 @@
 import { Avatar, Box, CardHeader, Paper, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import CommentsComponent from './CommentsComponent';
-import postsMock from '../mockData';
 import usePosts from '../hooks/usePosts';
 import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
-
-let post = postsMock[0]
-
 
 export default function Post() {
     const { id } = useParams()
