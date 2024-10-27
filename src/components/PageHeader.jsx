@@ -8,8 +8,8 @@ export default function PageHeader({ title, subtitle }) {
 
     return (
         <Box sx={{ p: '20px 0 5px', color: isDark ? '#fff' : '#000' }}>
-            <Typography align='center' variant='h2' component='h1'>{capitalizeWords(title)}</Typography>
-            <Typography align='center' variant='h5' component='h2'>{capitalizeWords(subtitle)}</Typography>
+            <Typography sx={{ fontSize: '3rem' }} align='center' variant='h2' component='h1'>{capitalizeWords(title)}</Typography>
+            <Typography sx={{ fontSize: '1rem' }} align='center' variant='h5' component='h2'>{capitalizeWords(subtitle)}</Typography>
             <Divider sx={{ my: 2 }} />
         </Box>
     )
