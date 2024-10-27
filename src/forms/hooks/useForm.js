@@ -53,8 +53,10 @@ export default function useForm(initialForm, schema, handleSubmit) {
         handleSubmit(data);
     }, [data]);
 
+
     return {
         data,
+        setData,
         errors,
         setData,
         handleChange,

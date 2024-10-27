@@ -30,7 +30,7 @@ const Form = ({
             <Typography align='center' variant='h5' component='h1' mb={2}>
                 {title.toUpperCase()}
             </Typography>
-            <Box container spacing={spacing}>
+            <Box spacing={spacing}>
                 {children}
             </Box>
 

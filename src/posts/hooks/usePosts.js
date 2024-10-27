@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useSnack } from "../../providers/SnackBarProvider";
-import { getAllPosts, getPost } from "../services/postsApiServices";
+import { getAllPosts, getPost, submitComment } from "../services/postsApiServices";
 
 export default function usePosts() {
     const [postsData, setPostsData] = useState([]);
@@ -19,12 +19,12 @@ export default function usePosts() {
             setError(error.message);
             setSnack('error', 'requeset failed');
         }
-        setIsLoading(false)
+        setIsLoading(false);
     }, []);
 
     const handleGetPostById = useCallback(async (id) => {
+        setIsLoading(true);
         try {
-            setIsLoading(true);
             const response = await getPost(id);
             setPostDetailsData(response);
             setSnack('success', 'Post Has Been Loaded');
@@ -32,8 +32,20 @@ export default function usePosts() {
             setError(error.message);
             setSnack('error', 'Request Failed');
         };
+        setIsLoading(false);
+    }, []);
+
+    const handleNewComment = useCallback(async (comment) => {
+        setIsLoading(true);
+        try {
+            await submitComment(comment);
+            setSnack('success', 'Comment submit successfully')
+        } catch (error) {
+            setError(error.message);
+            setSnack('error', error.message);
+        };
         setIsLoading(false)
     }, [])
 
-    return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData }
+    return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData, handleNewComment }
 }
