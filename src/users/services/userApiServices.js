@@ -12,4 +12,14 @@ const login = async (userLogin) => {
     };
 };
 
-export { login }
+const signup = async (userSignup) => {
+    try {
+        const response = await axios.post(apiUrl, userSignup);
+        const data = response.data;
+        return data
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+
+export { login, signup }

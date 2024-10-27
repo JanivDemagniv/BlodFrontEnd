@@ -6,6 +6,7 @@ import About from '../pages/About'
 import Posts from '../posts/component/Posts'
 import Post from '../posts/component/Post'
 import LoginPage from '../users/pages/LoginPage'
+import SignupPage from '../users/pages/SignupPage'
 
 export default function Router() {
     return (
@@ -15,6 +16,7 @@ export default function Router() {
             <Route path={ROUTES.POSTS} element={<Posts />} />
             <Route path={ROUTES.POSTINFO + '/:id'} element={<Post />} />
             <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+            <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
             <Route path='*' element={<Error />} />
         </Routes>
     )

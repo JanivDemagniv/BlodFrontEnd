@@ -1,10 +1,11 @@
 import { useCallback, useState } from "react";
 import { useCurrentUser } from "../provider/UserProvider";
 import { useSnack } from "../../providers/SnackBarProvider";
-import { login } from "../services/userApiServices";
+import { login, signup } from "../services/userApiServices";
 import { getUser, removeToken, setTokenInLocalStorage } from "../services/localStorageService";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModule";
+import normalizeUser from "../helpers/normlization/normalizeUser";
 
 export default function useUsers() {
     const [isLoading, setIsLoading] = useState(true);
@@ -34,9 +35,23 @@ export default function useUsers() {
         setUser(null);
         navigate(ROUTES.ROOT);
         setSnack('success', 'You logout successfully');
+    }, []);
+
+    const handleSignup = useCallback(async (userSignup) => {
+        setIsLoading(true);
+        try {
+            const signupNormlize = normalizeUser(userSignup);
+            await signup(signupNormlize);
+            await handleLogin({ email: userSignup.email, password: userSignup.password });
+            setSnack('success', 'Welcome to our family')
+        } catch (error) {
+            setError(error.message);
+            setSnack('error', 'Something went wrong');
+        };
+        setIsLoading(false);
     }, [])
 
     return {
-        isLoading, error, handleLogin, handleLogout
+        isLoading, error, handleLogin, handleLogout, handleSignup
     }
 }

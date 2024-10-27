@@ -3,7 +3,8 @@ const ROUTES = {
     ABOUT: '/about',
     POSTS: '/posts',
     POSTINFO: '/post',
-    LOGIN: '/login'
+    LOGIN: '/login',
+    SIGNUP: '/signup'
 }
 
 export default ROUTES
