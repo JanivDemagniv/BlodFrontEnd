@@ -18,6 +18,7 @@ const FormButton = ({
             color={color}
             onClick={onClick}
             disabled={disabled}
+            sx={{ m: '5px' }}
             fullWidth
         >
             {node}

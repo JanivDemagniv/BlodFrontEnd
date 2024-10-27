@@ -1,4 +1,4 @@
-import { Box, Grid2, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import FormButton from './FormButton';
@@ -30,12 +30,12 @@ const Form = ({
             <Typography align='center' variant='h5' component='h1' mb={2}>
                 {title.toUpperCase()}
             </Typography>
-            <Grid2 container spacing={spacing}>
+            <Box container spacing={spacing}>
                 {children}
-            </Grid2>
+            </Box>
 
-            <Grid2 container spacing={1} my={2} direction='row' width='100'>
-                <Grid2 item xs={12} sm={6}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                <Box>
                     <FormButton
                         node='cancel'
                         color='error'
@@ -43,24 +43,24 @@ const Form = ({
                         variant='outlined'
                         onClick={() => navigate(to)}
                     />
-                </Grid2>
-                <Grid2 item xs={12} sm={6}>
+                </Box>
+                <Box>
                     <FormButton
                         node={<LoopIcon />}
                         variant='outlined'
                         component='div'
                         onClick={onReset}
                     />
-                </Grid2>
-                <Grid2 item xs={12}>
+                </Box>
+                <Box>
                     <FormButton
                         node='Submit'
                         onClick={onSubmit}
                         disabled={!validateForm()}
                         size='large'
                     />
-                </Grid2>
-            </Grid2>
+                </Box>
+            </Box>
         </Box>
     );
 };

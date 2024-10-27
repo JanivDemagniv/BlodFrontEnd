@@ -1,4 +1,4 @@
-import { Grid2, TextField } from '@mui/material'
+import { Box, TextField } from '@mui/material'
 import React from 'react'
 
 const Input = ({
@@ -9,11 +9,9 @@ const Input = ({
     label,
     required = true,
     error,
-    onChange,
-    ...rest
-}) => {
+    onChange }) => {
     return (
-        <Grid2 item xs={12} {...rest}>
+        <Box>
             <TextField
                 variant={variant}
                 label={label}
@@ -25,10 +23,16 @@ const Input = ({
                 helperText={error}
                 error={Boolean(error)}
                 onChange={onChange}
+                sx={{
+                    m: '5px', "& .MuiInputLabel-outlined": {
+                        color: "#ff6f00",
+                        fontWeight: "bold",
+                    }
+                }}
                 fullWidth
                 autoComplete='off'
             />
-        </Grid2>
+        </Box>
     )
 }
 

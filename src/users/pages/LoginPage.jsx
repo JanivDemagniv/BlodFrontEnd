@@ -25,7 +25,7 @@ export default function LoginPage() {
 
     if (user) return <Navigate to={ROUTES.ROOT} replace />
     return (
-        <Box>
+        <Box >
             <PageHeader title='Login' subtitle='Login if you already have a user' />
             <LoginForm
                 onSubmit={onSubmit}

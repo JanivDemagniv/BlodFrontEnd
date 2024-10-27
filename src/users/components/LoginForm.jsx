@@ -1,9 +1,10 @@
-import { Box, Button, Grid2 } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import React from 'react';
 import Form from '../../forms/components/Form';
 import Input from '../../forms/components/input';
 import ROUTES from '../../routes/routesModule';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import FormButton from '../../forms/components/FormButton';
 
 
 export default function LoginForm({
@@ -16,7 +17,7 @@ export default function LoginForm({
     onSubmit
 }) {
     return (
-        <Box>
+        <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
             <Form
                 onSubmit={onSubmit}
                 onReset={onReset}
@@ -41,16 +42,16 @@ export default function LoginForm({
                     data={data}
                     sm={6}
                 />
-                <Grid2 item xs={12} sm={12}>
-                    <Button
-                        sx={{ width: '100%' }}
-                        variant='outlined'
-                        to={ROUTES.ROOT}
-                        startIcon={<AccountBoxIcon />}
-                    >
-                        Sign Up
-                    </Button>
-                </Grid2>
+                {/* <Box> */}
+                <FormButton
+                    sx={{ width: '100%' }}
+                    variant='outlined'
+                    to={ROUTES.ROOT}
+                    startIcon={<AccountBoxIcon />}
+                    node='Sign Up'
+                />
+
+                {/* </Box> */}
             </Form>
         </Box>
     )
