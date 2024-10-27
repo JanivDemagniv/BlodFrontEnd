@@ -1,11 +1,13 @@
-import { Box, IconButton, Menu, MenuItem } from '@mui/material';
+import { Box, Divider, IconButton, Menu, MenuItem } from '@mui/material';
 import React, { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import NavBarItem from '../../../routes/components/NavBarItem';
 import ROUTES from '../../../routes/routesModule';
+import { useCurrentUser } from '../../../users/provider/UserProvider';
 
 
 export default function LeftNavBarMobile() {
+    const { user } = useCurrentUser();
     const [anchorElNav, setAnchorElNav] = useState(null)
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -46,6 +48,9 @@ export default function LeftNavBarMobile() {
                 <MenuItem><NavBarItem to={ROUTES.ROOT}>Home</NavBarItem></MenuItem>
                 <MenuItem><NavBarItem to={ROUTES.ABOUT}>About Us</NavBarItem></MenuItem>
                 <MenuItem><NavBarItem to={ROUTES.POSTS}>Posts</NavBarItem></MenuItem>
+                {!user ? <Divider /> : null}
+                {!user ? <MenuItem><NavBarItem to={ROUTES.LOGIN}>Login</NavBarItem></MenuItem> : null}
+                {!user ? <MenuItem><NavBarItem to={ROUTES.SIGNUP}>Sign Up</NavBarItem></MenuItem> : null}
             </Menu>
         </Box>
     )

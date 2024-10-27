@@ -17,8 +17,10 @@ export default function RightNavBar() {
             <IconButton sx={{ ml: 1, width: '32px', height: '32px', alignSelf: 'center' }} onClick={toggelDarkMode}>
                 {isDark ? <LightModeIcon /> : <DarkModeIcon />}
             </IconButton>
-            {user ? null : <NavBarItem to={ROUTES.SIGNUP}>Signup</NavBarItem>}
-            {user ? null : <NavBarItem to={ROUTES.LOGIN}>Lognin</NavBarItem>}
+            <Box component='span' sx={{ display: { xs: 'none', md: 'inline-block' } }}>
+                {user ? null : <NavBarItem to={ROUTES.SIGNUP}>Signup</NavBarItem>}
+                {user ? null : <NavBarItem to={ROUTES.LOGIN}>Lognin</NavBarItem>}
+            </Box>
             {user ? <ProfileManu /> : null}
         </Box>
     )
