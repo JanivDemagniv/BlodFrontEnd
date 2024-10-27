@@ -45,7 +45,7 @@ export default function Post() {
                 </Box>
             </Box>
             <Box>
-                <CommentsComponent post={postDetailsData} />
+                <CommentsComponent post={postDetailsData} expand={true} />
             </Box>
         </Box>
     )

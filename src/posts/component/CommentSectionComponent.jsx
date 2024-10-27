@@ -36,9 +36,6 @@ export default function CommentSectionComponent({ postId }) {
                 onInputChange={handleChange}
                 user={user}
             />
-
-            {/* <TextField multiline minRows='2' variant='filled' sx={{ flexGrow: '1 ', minWidth: '50%' }} /> */}
-            {/* <Button sx={{ flexGrow: '1', minWidth: '50%' }}>Send</Button> */}
         </Box>
     )
 }

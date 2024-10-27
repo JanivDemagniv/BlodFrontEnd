@@ -3,9 +3,10 @@ import React, { useState } from 'react'
 import { useTheme } from '../../providers/CustomTheme';
 import { capitalizeWords } from '../../helpers/generalFunctions';
 
-export default function ContentComponent({ post }) {
+export default function ContentComponent({ post, params }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const { isDark } = useTheme();
+
     const toggleMore = () => {
         setIsExpanded(!isExpanded);
     }

@@ -7,7 +7,6 @@ import CommentsComponent from './CommentsComponent';
 
 export default function PostComponent({ post }) {
 
-
     return (
         <Card sx={{ maxWidth: { xs: '100vw', md: '55vw' }, m: '20px auto' }}>
             <HeaderComponent post={post} />

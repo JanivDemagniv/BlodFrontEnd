@@ -1,7 +1,12 @@
-import { Avatar, Divider, ListItem, ListItemAvatar, ListItemText, Paper, Typography } from '@mui/material'
+import { Avatar, Box, Divider, IconButton, ListItem, ListItemAvatar, ListItemText, Paper, Typography } from '@mui/material'
 import React from 'react'
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-export default function CommentContentComponent({ comment }) {
+
+
+export default function CommentContentComponent({ comment, user }) {
     return (
         <ListItem alignItems="flex-start">
             <ListItemAvatar>
@@ -10,14 +15,26 @@ export default function CommentContentComponent({ comment }) {
             <ListItemText
                 primary={comment.creator.name}
                 secondary={
-                    <React.Fragment>
-                        <Paper sx={{ p: '2%' }}>
+                    <>
+                        <Paper sx={{ p: '2%', display: 'flex', flexDirection: 'column' }}>
                             {comment.content}
                         </Paper>
                         <Typography variant='caption'>
                             {comment.createdAt}
                         </Typography>
-                    </React.Fragment>
+                        <Divider />
+                        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                            {user ? <IconButton size='small'>
+                                <FavoriteIcon fontSize="small" />
+                            </IconButton> : null}
+                            {user || user && user.isAdmin && user._id === comment.creator._id ? <IconButton size='small'>
+                                <DeleteIcon fontSize="small" />
+                            </IconButton> : null}
+                            {user && user._id || user && user.isAdmin === comment.creator._id ? <IconButton size='small'>
+                                <EditIcon fontSize="small" />
+                            </IconButton> : null}
+                        </Box>
+                    </>
                 }
             />
             <Divider variant="inset" component="li" />

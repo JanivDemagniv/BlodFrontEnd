@@ -7,13 +7,13 @@ import { useTheme } from '../../providers/CustomTheme';
 import { useCurrentUser } from '../../users/provider/UserProvider';
 import CommentSectionComponent from './CommentSectionComponent';
 
-export default function CommentsComponent({ post }) {
+export default function CommentsComponent({ post, expand = false }) {
     const { isDark } = useTheme();
     const { user } = useCurrentUser();
 
     return (
         <CardContent>
-            <Accordion sx={{ backgroundColor: isDark ? '#4A6572' : '#FDD835', color: '#000' }}>
+            <Accordion defaultExpanded={expand} sx={{ backgroundColor: isDark ? '#4A6572' : '#FDD835', color: '#000' }}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1-content"
@@ -22,8 +22,8 @@ export default function CommentsComponent({ post }) {
                     Comments
                 </AccordionSummary>
                 <AccordionDetails>
-                    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.defult', color: '#000' }}>
-                        {post.comments.map((comment) => <CommentContentComponent comment={comment} key={comment._id} />)}
+                    <List sx={{ width: '100%', bgcolor: 'background.defult', color: '#000' }}>
+                        {post.comments.map((comment) => <CommentContentComponent comment={comment} key={comment._id} user={user} />)}
                     </List>
                     {user ? <CommentSectionComponent postId={post._id} /> : null}
                 </AccordionDetails>
