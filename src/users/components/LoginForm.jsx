@@ -1,10 +1,10 @@
 import { Box, Button } from '@mui/material';
 import React from 'react';
 import Form from '../../forms/components/Form';
-import Input from '../../forms/components/input';
 import ROUTES from '../../routes/routesModule';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import FormButton from '../../forms/components/FormButton';
+import Input from '../../forms/components/Input';
 
 
 export default function LoginForm({
@@ -31,7 +31,6 @@ export default function LoginForm({
                     error={errors.email}
                     onChange={onInputChange}
                     data={data}
-                    sm={6}
                 />
                 <Input
                     name='password'
@@ -40,9 +39,7 @@ export default function LoginForm({
                     error={errors.password}
                     onChange={onInputChange}
                     data={data}
-                    sm={6}
                 />
-                {/* <Box> */}
                 <FormButton
                     sx={{ width: '100%' }}
                     variant='outlined'
@@ -50,8 +47,6 @@ export default function LoginForm({
                     startIcon={<AccountBoxIcon />}
                     node='Sign Up'
                 />
-
-                {/* </Box> */}
             </Form>
         </Box>
     )

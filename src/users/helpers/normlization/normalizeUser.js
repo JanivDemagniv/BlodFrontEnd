@@ -1,4 +1,5 @@
 const normalizeUser = (user) => ({
+    userName: user.username,
     name: {
         first: user.first,
         middle: user.middle,

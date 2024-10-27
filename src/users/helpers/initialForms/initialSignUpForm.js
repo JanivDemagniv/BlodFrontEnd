@@ -1,7 +1,7 @@
 const initialSignupForm = {
-    userName: "",
-    password: "",
+    username: "",
     email: "",
+    password: "",
     first: "",
     middle: "",
     last: "",

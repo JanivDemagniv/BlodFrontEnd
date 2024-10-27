@@ -66,14 +66,15 @@ export default function SignupForm({
                     data={data}
                 />
                 <Input
-                    name='url'
+                    name='imageUrl'
                     label='image url'
                     error={errors.fist}
                     onChange={onInputChange}
                     data={data}
+                    required={false}
                 />
                 <Input
-                    name='alt'
+                    name='imageAlt'
                     label='image alt'
                     error={errors.fist}
                     onChange={onInputChange}
