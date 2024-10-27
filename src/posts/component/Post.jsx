@@ -25,10 +25,10 @@ export default function Post() {
             <PageHeader title={postDetailsData.title} subtitle={postDetailsData.subtitle} />
             <Box sx={{ pl: '15px', display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: '2%' }}>
                 <Box>
-                    <Box component='img' src={postDetailsData.image.url} sx={{ maxWidth: { xs: '150px', md: '400px' }, height: { xs: '150px', md: '400px' }, borderRadius: '5%' }} />
+                    <Box component='img' src={postDetailsData.image.url} alt={postDetailsData.image.alt} sx={{ maxWidth: { xs: '150px', md: '400px' }, height: { xs: '150px', md: '400px' }, borderRadius: '5%' }} />
                     <CardHeader sx={{ bgcolor: isDark ? '#90A4AE' : '#ff9800', borderRadius: '10px' }}
                         avatar={
-                            <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe" src={postDetailsData.creator.image.url} />
+                            <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe" src={postDetailsData.creator.image.url} alt={postDetailsData.creator.image.alt} />
                         }
                         title={capitalizeWords(postDetailsData.creator.name)}
                         subheader={postDetailsData.createdAt}

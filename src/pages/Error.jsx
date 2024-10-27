@@ -7,7 +7,7 @@ export default function Error() {
     const navigate = useNavigate()
     return (
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Box component='img' src='./brokenError.png' />
+            <Box component='img' src='./brokenError.png' alt='Wrong page Picture' />
             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 <Typography sx={{ fontSize: { xs: '1rem', md: '2rem', p: '2%' } }}>
                     Error 404: Page not Found

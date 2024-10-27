@@ -8,7 +8,7 @@ export default function HeaderComponent({ post }) {
         <>
             <CardHeader
                 avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" src={post.creator.image.url} />
+                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" src={post.creator.image.url} alt={post.creator.image.alt} />
                 }
                 title={capitalizeWords(post.creator.name)}
                 subheader={post.createdAt}

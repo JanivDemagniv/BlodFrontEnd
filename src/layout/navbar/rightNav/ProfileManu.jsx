@@ -1,9 +1,14 @@
 import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 import React from 'react'
 import { useState } from 'react'
+import { useCurrentUser } from '../../../users/provider/UserProvider';
+import { rplacePic } from '../../../helpers/replaceValues';
 
 export default function ProfileManu() {
     const [anchorElUser, setAnchorElUser] = useState(null);
+    const { user } = useCurrentUser();
+
+
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
@@ -11,11 +16,12 @@ export default function ProfileManu() {
         setAnchorElUser(null);
     };
 
+
     return (
         <Box>
             <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} >
-                    <Avatar alt="blabla" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt={user ? user.profilePic.alt : rplacePic.alt} src={user ? user.profilePic.url : rplacePic.url} />
                 </IconButton>
             </Tooltip>
             <Menu
