@@ -3,10 +3,12 @@ import React from 'react'
 import { useState } from 'react'
 import { useCurrentUser } from '../../../users/provider/UserProvider';
 import { rplacePic } from '../../../helpers/replaceValues';
+import useUsers from '../../../users/hooks/useUsers';
 
 export default function ProfileManu() {
     const [anchorElUser, setAnchorElUser] = useState(null);
     const { user } = useCurrentUser();
+    const { handleLogout } = useUsers();
 
 
     const handleOpenUserMenu = (event) => {
@@ -41,6 +43,7 @@ export default function ProfileManu() {
                 onClose={handleCloseUserMenu}
             >
                 <MenuItem>Profile</MenuItem>
+                <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
             </Menu>
         </Box>
     )

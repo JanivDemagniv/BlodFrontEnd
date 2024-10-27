@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { useCurrentUser } from "../provider/UserProvider";
 import { useSnack } from "../../providers/SnackBarProvider";
 import { login } from "../services/userApiServices";
-import { getUser, setTokenInLocalStorage } from "../services/localStorageService";
+import { getUser, removeToken, setTokenInLocalStorage } from "../services/localStorageService";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModule";
 
@@ -29,7 +29,14 @@ export default function useUsers() {
         setIsLoading(false);
     }, []);
 
+    const handleLogout = useCallback(() => {
+        removeToken();
+        setUser(null);
+        navigate(ROUTES.ROOT);
+        setSnack('success', 'You logout successfully');
+    }, [])
+
     return {
-        isLoading, error, handleLogin
+        isLoading, error, handleLogin, handleLogout
     }
 }
