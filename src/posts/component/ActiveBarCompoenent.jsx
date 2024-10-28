@@ -1,5 +1,5 @@
 import { Box, CardActions, IconButton } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import EditIcon from '@mui/icons-material/Edit';
@@ -9,6 +9,12 @@ import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../routes/routesModule';
 
 export default function ActiveBarCompoenent({ post }) {
+    const [isLike, setIsLike] = useState(false);
+
+    const handleLikeOnScreen = () => {
+        setIsLike((p) => !p);
+    };
+
     const navigate = useNavigate()
     return (
         <CardActions sx={{
@@ -17,8 +23,8 @@ export default function ActiveBarCompoenent({ post }) {
             p: '1%'
         }}>
             <Box>
-                <IconButton sx={{ color: 'white' }} aria-label="add to favorites">
-                    <FavoriteIcon />
+                <IconButton onClick={() => handleLikeOnScreen()} sx={{ color: 'white' }} aria-label="add to favorites">
+                    <FavoriteIcon sx={{ color: isLike ? 'red' : 'white' }} />
                 </IconButton>
                 <IconButton sx={{ color: 'white' }} aria-label="share">
                     <ShareIcon />
