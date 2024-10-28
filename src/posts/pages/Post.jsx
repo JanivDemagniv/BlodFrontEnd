@@ -40,7 +40,7 @@ export default function Post() {
                     <Typography variant='h6' sx={{ fontSize: '1rem' }}>{capitalizeWords(postDetailsData.title)}</Typography>
                     <Typography variant='h6' sx={{ fontSize: '1rem' }}>{capitalizeWords(postDetailsData.subtitle)}</Typography>
                     <Paper sx={{ p: '2%', textAlign: 'justify' }}>
-                        {postDetailsData.content}
+                        <div dangerouslySetInnerHTML={{ __html: postDetailsData.content }} />
                     </Paper>
                 </Box>
             </Box>

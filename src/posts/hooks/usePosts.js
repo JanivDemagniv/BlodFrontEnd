@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useSnack } from "../../providers/SnackBarProvider";
-import { getAllPosts, getPost, newPost, submitComment } from "../services/postsApiServices";
+import { getAllPosts, getPost, submitComment, submitNewPost } from "../services/postsApiServices";
 import normlizePost from "../helpers/normalize/normalizePost";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModule";
@@ -43,7 +43,7 @@ export default function usePosts() {
         setIsLoading(true);
         try {
             const addPost = normlizePost(post);
-            const newPost = await newPost(addPost);
+            const newPost = await submitNewPost(addPost);
             setSnack('success', 'Post is created');
             navigate(ROUTES.POSTINFO + '/' + newPost._id);
         } catch (error) {

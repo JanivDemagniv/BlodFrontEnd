@@ -8,6 +8,7 @@ import SignupPage from '../users/pages/SignupPage'
 import Posts from '../posts/pages/Posts'
 import Post from '../posts/pages/Post'
 import AddPost from '../posts/pages/AddPost'
+import TextEditor from '../forms/textEditor/TextEditor'
 
 export default function Router() {
     return (
@@ -19,6 +20,7 @@ export default function Router() {
             <Route path={ROUTES.LOGIN} element={<LoginPage />} />
             <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
             <Route path={ROUTES.ADDPOST} element={<AddPost />} />
+            <Route path='editor' element={<TextEditor />} />
             <Route path='*' element={<Error />} />
         </Routes>
     )

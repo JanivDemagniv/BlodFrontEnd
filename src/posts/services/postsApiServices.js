@@ -26,7 +26,7 @@ const getPost = async (id) => {
     };
 };
 
-const newPost = async (post) => {
+const submitNewPost = async (post) => {
     try {
         const response = await axios.post(apiUrl, post);
         const data = response.data;
@@ -46,4 +46,4 @@ const submitComment = async (comment) => {
     };
 };
 
-export { getAllPosts, getPost, submitComment, newPost }
+export { getAllPosts, getPost, submitComment, submitNewPost }

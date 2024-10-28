@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi, { string } from "joi";
 import { useCallback, useState } from "react";
 
 export default function useForm(initialForm, schema, handleSubmit) {
@@ -13,8 +13,15 @@ export default function useForm(initialForm, schema, handleSubmit) {
 
 
     const handleChange = useCallback((e) => {
-        let value = e.target.value;
-        let name = e.target.name;
+        let name, value
+
+        if (typeof e === 'string') { // Case for ReactQuill
+            value = e;
+            name = 'content';
+        } else { // Case for MUI components
+            value = e.target.value;
+            name = e.target.name;
+        }
 
         const errorMessage = validateProperty(name, value);
 

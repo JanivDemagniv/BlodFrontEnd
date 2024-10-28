@@ -2,6 +2,7 @@ import { Box } from '@mui/material'
 import React from 'react'
 import Form from '../../forms/components/Form'
 import Input from '../../forms/components/Input'
+import TextEditor from '../../forms/textEditor/TextEditor'
 
 export default function PostForm({
     onSubmit,
@@ -12,6 +13,8 @@ export default function PostForm({
     data,
     onInputChange
 }) {
+    console.log(data);
+
     return (
         <Box>
             <Form
@@ -52,14 +55,15 @@ export default function PostForm({
                     data={data}
                     required
                 />
-                <Input
+                {/* <Input
                     name='content'
                     label='content'
                     error={errors.content}
                     onChange={onInputChange}
                     data={data}
                     required
-                />
+                /> */}
+                <TextEditor data={data} onChange={onInputChange} />
                 <Input
                     name='imageUrl'
                     label='imageUrl'

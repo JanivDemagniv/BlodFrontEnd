@@ -9,7 +9,13 @@ export default function ContentComponent({ post, params }) {
 
     const toggleMore = () => {
         setIsExpanded(!isExpanded);
-    }
+    };
+
+    const truncateContent = (content, length) => {
+        const div = document.createElement("div");
+        div.innerHTML = content;
+        return div.innerText.substring(0, length);
+    };
 
     return (
         <>
@@ -24,7 +30,14 @@ export default function ContentComponent({ post, params }) {
             </CardContent>
             <CardContent>
                 <Paper sx={{ marginBottom: 2, bgcolor: isDark ? '#4A6572' : '#FDD835', color: '#212121', p: '2%', fontFamily: 'Roboto', textAlign: 'justify' }}>
-                    {isExpanded ? post.content : `${post.content.substring(0, 300)}...`}
+                    {/* {isExpanded ? post.content : `${post.content.substring(0, 300)}...`} */}
+                    {isExpanded ? (
+                        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                    ) : (
+                        <div>
+                            {truncateContent(post.content, 300)}...
+                        </div>
+                    )}
                     <Button onClick={toggleMore}>{isExpanded ? 'Show Less' : 'Read More'}</Button>
                 </Paper>
                 <Divider />
