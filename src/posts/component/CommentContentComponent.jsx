@@ -27,11 +27,11 @@ export default function CommentContentComponent({ comment, user }) {
                             {user ? <IconButton size='small'>
                                 <FavoriteIcon fontSize="small" />
                             </IconButton> : null}
-                            {user || user && user.isAdmin && user._id === comment.creator._id ? <IconButton size='small'>
-                                <DeleteIcon fontSize="small" />
-                            </IconButton> : null}
                             {user && user._id || user && user.isAdmin === comment.creator._id ? <IconButton size='small'>
                                 <EditIcon fontSize="small" />
+                            </IconButton> : null}
+                            {user || user && user.isAdmin && user._id === comment.creator._id ? <IconButton size='small'>
+                                <DeleteIcon fontSize="small" />
                             </IconButton> : null}
                         </Box>
                     </>
