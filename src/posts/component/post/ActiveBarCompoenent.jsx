@@ -1,5 +1,5 @@
 import { Box, CardActions, IconButton } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import EditIcon from '@mui/icons-material/Edit';
@@ -7,9 +7,24 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ArticleIcon from '@mui/icons-material/Article';
 import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../../routes/routesModule';
+import { useCurrentUser } from '../../../users/provider/UserProvider';
 
 export default function ActiveBarCompoenent({ post }) {
     const [isLike, setIsLike] = useState(false);
+    const { user } = useCurrentUser();
+
+    useEffect(() => {
+        if (user && user.likedPosts) {
+            user.likedPosts.forEach((postId) => {
+                if (postId === post._id) {
+                    setIsLike(true)
+
+                }
+            })
+
+
+        }
+    }, [])
 
     const handleLikeOnScreen = () => {
         setIsLike((p) => !p);

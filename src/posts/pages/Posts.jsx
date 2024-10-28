@@ -6,6 +6,7 @@ import usePosts from '../hooks/usePosts';
 import Spinner from '../../components/Spinner';
 import Error from '../../components/Error';
 import AddNewPostButton from '../component/AddNewPostButton';
+import { useCurrentUser } from '../../users/provider/UserProvider';
 
 export default function Posts() {
     const { postsData, isLoading, error, handleGetAllPosts } = usePosts();
@@ -13,6 +14,7 @@ export default function Posts() {
     const itemPerPage = 3;
     const indexOfLastItem = currentPage * itemPerPage;
     const indexOfFirstItem = indexOfLastItem - itemPerPage;
+    const { user } = useCurrentUser();
 
     const currentItem = postsData.slice(indexOfFirstItem, indexOfLastItem);
 
@@ -41,7 +43,7 @@ export default function Posts() {
                     onChange={handlePageChange}
                 />
             </Box>
-            <AddNewPostButton />
+            {user && user.isCreator || user && user.isAdmin ? <AddNewPostButton /> : null}
         </Box>
     )
 }
