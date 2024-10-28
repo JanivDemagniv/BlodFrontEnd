@@ -6,8 +6,6 @@ import { useCurrentUser } from '../../../users/provider/UserProvider'
 
 export default function LeftNavBar() {
     const { user } = useCurrentUser();
-    console.log(user);
-
 
     return (
         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
