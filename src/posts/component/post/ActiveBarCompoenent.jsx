@@ -13,22 +13,18 @@ export default function ActiveBarCompoenent({ post }) {
     const [isLike, setIsLike] = useState(false);
     const { user } = useCurrentUser();
 
-    useEffect(() => {
-        if (user && user.likedPosts) {
-            user.likedPosts.forEach((postId) => {
-                if (postId === post._id) {
-                    setIsLike(true)
-
-                }
-            })
-
-
-        }
-    }, [])
-
     const handleLikeOnScreen = () => {
         setIsLike((p) => !p);
     };
+
+    useEffect(() => {
+        if (post.likes.includes(user._id)) {
+            setIsLike(true)
+        }
+        if (!post.likes.includes(user._id)) {
+            setIsLike(false)
+        }
+    }, [])
 
     const navigate = useNavigate()
     return (

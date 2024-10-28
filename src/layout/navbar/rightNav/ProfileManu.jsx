@@ -10,7 +10,6 @@ export default function ProfileManu() {
     const { user } = useCurrentUser();
     const { handleLogout } = useUsers();
 
-
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
@@ -23,7 +22,7 @@ export default function ProfileManu() {
         <Box>
             <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} >
-                    <Avatar alt={user ? user.profilePic.alt : rplacePic.alt} src={user ? user.profilePic.url : rplacePic.url} />
+                    <Avatar alt={user && user.profilePic.alt ? user.profilePic.alt : rplacePic.alt} src={user ? user.profilePic.url : rplacePic.url} />
                 </IconButton>
             </Tooltip>
             <Menu
