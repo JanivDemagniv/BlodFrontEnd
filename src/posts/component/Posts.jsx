@@ -5,6 +5,7 @@ import PageHeader from '../../components/PageHeader';
 import usePosts from '../hooks/usePosts';
 import Spinner from '../../components/Spinner';
 import Error from '../../components/Error';
+import AddNewPostButton from './AddNewPostButton';
 
 export default function Posts() {
     const { postsData, isLoading, error, handleGetAllPosts } = usePosts();
@@ -40,6 +41,7 @@ export default function Posts() {
                     onChange={handlePageChange}
                 />
             </Box>
+            <AddNewPostButton />
         </Box>
     )
 }
