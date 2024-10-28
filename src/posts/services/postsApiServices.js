@@ -18,7 +18,7 @@ const getAllPosts = async () => {
 
 const getPost = async (id) => {
     try {
-        const response = await axios.get(apiUrl + '/' + id);
+        const response = await axios.get(apiUrl + id);
         const data = response.data;
         return data
     } catch (error) {
