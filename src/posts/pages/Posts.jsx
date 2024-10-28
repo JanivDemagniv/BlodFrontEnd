@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import PostsComponent from './PostsComponent'
+import PostsComponent from '../component/PostsComponent'
 import { Box, Pagination, Typography } from '@mui/material';
 import PageHeader from '../../components/PageHeader';
 import usePosts from '../hooks/usePosts';
 import Spinner from '../../components/Spinner';
 import Error from '../../components/Error';
-import AddNewPostButton from './AddNewPostButton';
+import AddNewPostButton from '../component/AddNewPostButton';
 
 export default function Posts() {
     const { postsData, isLoading, error, handleGetAllPosts } = usePosts();

@@ -1,11 +1,11 @@
 import { Avatar, Box, Button, TextField } from '@mui/material'
 import React, { useEffect } from 'react'
-import { rplacePic } from '../../helpers/replaceValues'
-import { useCurrentUser } from '../../users/provider/UserProvider'
-import usePosts from '../hooks/usePosts';
-import useForm from '../../forms/hooks/useForm';
-import initialComment from '../helpers/initialForms/initialComment';
-import commentSchema from '../models/commentSchema';
+import { rplacePic } from '../../../helpers/replaceValues'
+import { useCurrentUser } from '../../../users/provider/UserProvider'
+import usePosts from '../../hooks/usePosts';
+import useForm from '../../../forms/hooks/useForm';
+import initialComment from '../../helpers/initialForms/initialComment';
+import commentSchema from '../../models/commentSchema';
 import CommentFormComponent from './CommentFormComponent';
 
 export default function CommentSectionComponent({ postId }) {

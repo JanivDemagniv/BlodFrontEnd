@@ -2,10 +2,10 @@ import { Accordion, AccordionDetails, AccordionSummary, CardContent } from '@mui
 import React from 'react'
 import List from '@mui/material/List';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import CommentContentComponent from './CommentContentComponent';
+import CommentContentComponent from './comment/CommentContentComponent';
 import { useTheme } from '../../providers/CustomTheme';
 import { useCurrentUser } from '../../users/provider/UserProvider';
-import CommentSectionComponent from './CommentSectionComponent';
+import CommentSectionComponent from './comment/CommentSectionComponent';
 
 export default function CommentsComponent({ post, expand = false }) {
     const { isDark } = useTheme();

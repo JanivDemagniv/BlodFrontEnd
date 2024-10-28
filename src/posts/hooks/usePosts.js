@@ -1,6 +1,9 @@
 import { useCallback, useState } from "react";
 import { useSnack } from "../../providers/SnackBarProvider";
-import { getAllPosts, getPost, submitComment } from "../services/postsApiServices";
+import { getAllPosts, getPost, newPost, submitComment } from "../services/postsApiServices";
+import normlizePost from "../helpers/normalize/normalizePost";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "../../routes/routesModule";
 
 export default function usePosts() {
     const [postsData, setPostsData] = useState([]);
@@ -8,6 +11,7 @@ export default function usePosts() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
     const setSnack = useSnack();
+    const navigate = useNavigate();
 
     const handleGetAllPosts = useCallback(async () => {
         try {
@@ -35,6 +39,20 @@ export default function usePosts() {
         setIsLoading(false);
     }, []);
 
+    const handleCreatePost = useCallback(async (post) => {
+        setIsLoading(true);
+        try {
+            const addPost = normlizePost(post);
+            const newPost = await newPost(addPost);
+            setSnack('success', 'Post is created');
+            navigate(ROUTES.POSTINFO + '/' + newPost._id);
+        } catch (error) {
+            setError(error.message);
+            setSnack('error', error.message)
+        };
+        setIsLoading(false)
+    }, [])
+
     const handleNewComment = useCallback(async (comment) => {
         setIsLoading(true);
         try {
@@ -47,5 +65,5 @@ export default function usePosts() {
         setIsLoading(false)
     }, [])
 
-    return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData, handleNewComment }
+    return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData, handleNewComment, handleCreatePost }
 }

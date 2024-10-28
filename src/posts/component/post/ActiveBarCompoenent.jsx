@@ -6,7 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArticleIcon from '@mui/icons-material/Article';
 import { useNavigate } from 'react-router-dom';
-import ROUTES from '../../routes/routesModule';
+import ROUTES from '../../../routes/routesModule';
 
 export default function ActiveBarCompoenent({ post }) {
     const [isLike, setIsLike] = useState(false);

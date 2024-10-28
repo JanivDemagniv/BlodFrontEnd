@@ -1,6 +1,6 @@
 import { Avatar, Box, CardHeader, Paper, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
-import CommentsComponent from './CommentsComponent';
+import CommentsComponent from '../component/CommentsComponent';
 import usePosts from '../hooks/usePosts';
 import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';

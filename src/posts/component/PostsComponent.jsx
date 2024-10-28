@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import HeaderComponent from './HeaderComponent';
-import ContentComponent from './ContentComponent';
-import ActiveBarCompoenent from './ActiveBarCompoenent';
 import CommentsComponent from './CommentsComponent';
+import HeaderComponent from './post/HeaderComponent';
+import ContentComponent from './post/ContentComponent';
+import ActiveBarCompoenent from './post/ActiveBarCompoenent';
 
 export default function PostComponent({ post }) {
 

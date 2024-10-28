@@ -1,7 +1,7 @@
 import { Avatar, CardHeader, CardMedia } from '@mui/material'
 import { red } from '@mui/material/colors'
 import React from 'react'
-import { capitalizeWords } from '../../helpers/generalFunctions'
+import { capitalizeWords } from '../../../helpers/generalFunctions'
 
 export default function HeaderComponent({ post }) {
     return (
