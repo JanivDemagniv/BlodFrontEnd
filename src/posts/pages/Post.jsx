@@ -26,7 +26,7 @@ export default function Post() {
             <Box sx={{ pl: '15px', display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: '2%' }}>
                 <Box>
                     <Box component='img' src={postDetailsData.image.url} alt={postDetailsData.image.alt} sx={{ maxWidth: { xs: '150px', md: '400px' }, height: { xs: '150px', md: '400px' }, borderRadius: '5%' }} />
-                    <CardHeader sx={{ bgcolor: isDark ? '#90A4AE' : '#ff9800', borderRadius: '10px' }}
+                    <CardHeader sx={{ mt: '5px', bgcolor: isDark ? '#90A4AE' : '#ff9800', borderRadius: '10px' }}
                         avatar={
                             <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe" src={postDetailsData.creator.image.url} alt={postDetailsData.creator.image.alt} />
                         }
@@ -35,10 +35,8 @@ export default function Post() {
                     />
                 </Box>
                 <Box sx={{ p: '2%' }}>
-                    <Typography variant='h2' sx={{ fontSize: '1.5rem' }}>{capitalizeWords(postDetailsData.album)}</Typography>
+                    <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 'bold', textDecoration: 'underline' }}>{capitalizeWords(postDetailsData.album)}</Typography>
                     <Typography variant='h6' sx={{ fontSize: '1rem' }}>{capitalizeWords(postDetailsData.artist)}</Typography>
-                    <Typography variant='h6' sx={{ fontSize: '1rem' }}>{capitalizeWords(postDetailsData.title)}</Typography>
-                    <Typography variant='h6' sx={{ fontSize: '1rem' }}>{capitalizeWords(postDetailsData.subtitle)}</Typography>
                     <Paper sx={{ p: '2%', textAlign: 'justify' }}>
                         <div dangerouslySetInnerHTML={{ __html: postDetailsData.content }} />
                     </Paper>
