@@ -25,12 +25,14 @@ export default function EditPost() {
     } = useForm(initialPost, postSchema, handleUpdatePost);
 
     useEffect(() => {
-        if (postDetailsData) {
+        if (postDetailsData && postDetailsData.length > 0) {
+            console.log(postDetailsData);
+
             setData(mapPostToModel(postDetailsData));
         } else {
             handleGetPostById(id)
         }
-    }, [postDetailsData])
+    }, [])
 
     if (isLoading) return <Spinner />
     if (errors) return <Error errorMessage={error} />

@@ -5,7 +5,8 @@ const ROUTES = {
     POSTINFO: '/post',
     LOGIN: '/login',
     SIGNUP: '/signup',
-    ADDPOST: '/addnewpost'
+    ADDPOST: '/addnewpost',
+    EDITPOST: '/editpost'
 }
 
 export default ROUTES

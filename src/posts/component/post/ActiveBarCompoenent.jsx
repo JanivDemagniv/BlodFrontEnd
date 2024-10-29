@@ -47,7 +47,7 @@ export default function ActiveBarCompoenent({ post }) {
                 </IconButton>
             </Box>
             <Box>
-                <IconButton sx={{ color: 'white' }} aria-label='Edit'>
+                <IconButton onClick={() => { navigate(ROUTES.EDITPOST + '/' + post._id) }} sx={{ color: 'white' }} aria-label='Edit'>
                     <EditIcon />
                 </IconButton>
                 <IconButton sx={{ color: 'white' }} aria-label='Delete'>
