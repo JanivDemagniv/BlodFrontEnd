@@ -3,7 +3,7 @@ import React from 'react'
 import { useTheme } from '../providers/CustomTheme'
 import { capitalizeWords } from '../helpers/generalFunctions';
 
-export default function PageHeader({ title, subtitle }) {
+export default function PageHeader({ title, subtitle = "" }) {
     const { isDark } = useTheme();
 
     return (

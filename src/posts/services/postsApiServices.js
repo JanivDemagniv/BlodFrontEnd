@@ -46,4 +46,14 @@ const submitComment = async (comment) => {
     };
 };
 
-export { getAllPosts, getPost, submitComment, submitNewPost }
+const updatePost = async (newPost, postId) => {
+    try {
+        const response = await axios.put(apiUrl + postId, newPost);
+        const data = response.data;
+        return data
+    } catch (error) {
+        throw new Error(error.message);
+    };
+};
+
+export { getAllPosts, getPost, submitComment, submitNewPost, updatePost }

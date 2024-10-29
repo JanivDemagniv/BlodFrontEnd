@@ -1,9 +1,10 @@
 import { useCallback, useState } from "react";
 import { useSnack } from "../../providers/SnackBarProvider";
-import { getAllPosts, getPost, submitComment, submitNewPost } from "../services/postsApiServices";
+import { getAllPosts, getPost, submitComment, submitNewPost, updatePost } from "../services/postsApiServices";
 import normlizePost from "../helpers/normalize/normalizePost";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModule";
+import mapPostToModel from "../helpers/normalize/mapPostToModel";
 
 export default function usePosts() {
     const [postsData, setPostsData] = useState([]);
@@ -63,7 +64,21 @@ export default function usePosts() {
             setSnack('error', error.message);
         };
         setIsLoading(false)
+    }, []);
+
+    const handleUpdatePost = useCallback(async (post, postId) => {
+        setIsLoading(true);
+        try {
+            let newPost = mapPostToModel(post);
+            await updatePost(newPost, postId);
+            setSnack('success', 'Post have been updated');
+            navigate(ROUTES.POSTINFO + '/' + postId)
+        } catch (error) {
+            setError(error.message);
+            setSnack('error', error.message);
+        };
+        setIsLoading(false);
     }, [])
 
-    return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData, handleNewComment, handleCreatePost }
-}
+    return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData, handleNewComment, handleCreatePost, handleUpdatePost };
+};

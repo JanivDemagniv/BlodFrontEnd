@@ -78,7 +78,7 @@ export default function PostForm({
                     error={errors.imageUrl}
                     onChange={onInputChange}
                     data={data}
-                    required
+                    required={false}
                 />
             </Form>
         </Box>

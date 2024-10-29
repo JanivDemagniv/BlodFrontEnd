@@ -18,11 +18,13 @@ export default function ActiveBarCompoenent({ post }) {
     };
 
     useEffect(() => {
-        if (post.likes.includes(user._id)) {
-            setIsLike(true)
-        }
-        if (!post.likes.includes(user._id)) {
-            setIsLike(false)
+        if (user) {
+            if (post.likes.includes(user._id)) {
+                setIsLike(true)
+            }
+            if (!post.likes.includes(user._id)) {
+                setIsLike(false)
+            }
         }
     }, [])
 

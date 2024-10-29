@@ -15,10 +15,10 @@ export default function useForm(initialForm, schema, handleSubmit) {
     const handleChange = useCallback((e) => {
         let name, value
 
-        if (typeof e === 'string') { // Case for ReactQuill
+        if (typeof e === 'string') {
             value = e;
             name = 'content';
-        } else { // Case for MUI components
+        } else {
             value = e.target.value;
             name = e.target.name;
         }
