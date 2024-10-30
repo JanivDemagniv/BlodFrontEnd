@@ -24,7 +24,7 @@ export default function CommentSectionComponent({ postId }) {
 
     useEffect(() => {
         setData((perv) => ({ ...perv, post: postId }))
-    }, [handleNewComment])
+    }, [])
 
     return (
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '1.5%' }}>
