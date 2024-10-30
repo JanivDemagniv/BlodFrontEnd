@@ -1,10 +1,11 @@
 import { useCallback, useState } from "react";
 import { useSnack } from "../../providers/SnackBarProvider";
-import { getAllPosts, getPost, submitComment, submitNewPost, updatePost } from "../services/postsApiServices";
+import { getAllPosts, getPost, submitComment, submitNewPost, updateComment, updatePost } from "../services/postsApiServices";
 import normlizePost from "../helpers/normalize/normalizePost";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModule";
 import mapPostToModel from "../helpers/normalize/mapPostToModel";
+import normalizeComment from "../helpers/normalize/normalizeComment";
 
 export default function usePosts() {
     const [postsData, setPostsData] = useState([]);
@@ -74,14 +75,26 @@ export default function usePosts() {
         try {
             let newPost = normlizePost(post);
             await updatePost(newPost, postId);
-            setSnack('success', 'Post have been updated');
+            setSnack('success', 'Post has been updated');
             navigate(ROUTES.POSTINFO + '/' + postId)
         } catch (error) {
             setError(error.message);
             setSnack('error', error.message);
         };
         setIsLoading(false);
-    }, [])
+    }, []);
 
-    return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData, handleNewComment, handleCreatePost, handleUpdatePost };
+    const handleUpdateComment = useCallback(async (newComment, comment) => {
+        setIsLoading(true);
+        try {
+            await updateComment(normalizeComment(comment, newComment), comment._id);
+            setSnack('success', 'Comment has been updated');
+            navigate(ROUTES.POSTINFO + '/' + newComment.post);
+        } catch (error) {
+            setError(error.message);
+            setSnack('error', error.message);
+        };
+    }, []);
+
+    return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData, handleNewComment, handleCreatePost, handleUpdatePost, handleUpdateComment };
 };

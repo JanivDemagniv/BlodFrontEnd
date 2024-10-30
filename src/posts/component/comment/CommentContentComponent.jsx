@@ -1,8 +1,8 @@
 import { Avatar, Box, Divider, IconButton, ListItem, ListItemAvatar, ListItemText, Paper, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditPostComponent from './EditPostComponent';
 
 
 
@@ -33,9 +33,8 @@ export default function CommentContentComponent({ comment, user }) {
                             {user ? <IconButton onClick={() => { handleLikeColor() }} size='small'>
                                 <FavoriteIcon sx={{ color: pressLike ? 'red' : 'white' }} fontSize="small" />
                             </IconButton> : null}
-                            {user && user._id || user && user.isAdmin === comment.creator._id ? <IconButton size='small'>
-                                <EditIcon sx={{ color: 'white' }} fontSize="small" />
-                            </IconButton> : null}
+                            {user && user._id || user && user.isAdmin === comment.creator._id ?
+                                <EditPostComponent comment={comment} /> : null}
                             {user || user && user.isAdmin && user._id === comment.creator._id ? <IconButton size='small'>
                                 <DeleteIcon sx={{ color: 'white' }} fontSize="small" />
                             </IconButton> : null}
