@@ -20,7 +20,7 @@ export default function CommentSectionComponent({ postId }) {
         handleChange,
         validateForm,
         onSubmit
-    } = useForm(initialComment, commentSchema, handleNewComment);
+    } = useForm(initialComment, commentSchema, (data) => { handleNewComment(data, postId) });
 
     useEffect(() => {
         setData((perv) => ({ ...perv, post: postId }))

@@ -54,11 +54,12 @@ export default function usePosts() {
         setIsLoading(false)
     }, [])
 
-    const handleNewComment = useCallback(async (comment) => {
+    const handleNewComment = useCallback(async (comment, postId) => {
         setIsLoading(true);
         try {
             await submitComment(comment);
-            setSnack('success', 'Comment submit successfully')
+            setSnack('success', 'Comment submit successfully');
+            navigate(ROUTES.POSTINFO + '/' + postId);
         } catch (error) {
             setError(error.message);
             setSnack('error', error.message);
