@@ -11,7 +11,7 @@ export default function TextEditor({
 
     return (
         <Box sx={{ m: '5px', width: '100%', border: '1px solid #bbb', minHeight: '50vh', borderRadius: '5px' }}>
-            <ReactQuill value={data.content} onChange={(e) => { onChange(e); setValue(p => p) }} />
+            <ReactQuill value={data.content} onChange={(e) => { onChange(e) }} />
         </Box>
     )
 }

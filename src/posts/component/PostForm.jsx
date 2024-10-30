@@ -13,7 +13,6 @@ export default function PostForm({
     data,
     onInputChange
 }) {
-    console.log(data);
 
     return (
         <Box>

@@ -4,10 +4,12 @@ import ROUTES from "../routes/routesModule";
 
 const Error = ({ errorMessage }) => {
     const navigate = useNavigate();
+    console.log(errorMessage);
+
     return (
         <Container>
             <Box>
-                <Paper sx={{ p: '10px', m: '10px' }}>{errorMessage}</Paper>
+                <Paper sx={{ p: '10px', m: '10px', color: '#000' }}>{errorMessage}</Paper>
                 <Button onClick={() => navigate(ROUTES.ROOT)} variant='contained'>Return to main page</Button>
             </Box>
         </Container>)

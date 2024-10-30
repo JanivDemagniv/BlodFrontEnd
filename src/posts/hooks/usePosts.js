@@ -8,7 +8,7 @@ import mapPostToModel from "../helpers/normalize/mapPostToModel";
 
 export default function usePosts() {
     const [postsData, setPostsData] = useState([]);
-    const [postDetailsData, setPostDetailsData] = useState({});
+    const [postDetailsData, setPostDetailsData] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
     const setSnack = useSnack();
@@ -68,8 +68,10 @@ export default function usePosts() {
 
     const handleUpdatePost = useCallback(async (post, postId) => {
         setIsLoading(true);
+        console.log(postId);
+
         try {
-            let newPost = mapPostToModel(post);
+            let newPost = normlizePost(post);
             await updatePost(newPost, postId);
             setSnack('success', 'Post have been updated');
             navigate(ROUTES.POSTINFO + '/' + postId)

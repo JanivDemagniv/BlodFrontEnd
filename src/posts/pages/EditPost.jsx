@@ -22,21 +22,20 @@ export default function EditPost() {
         handleReset,
         validateForm,
         onSubmit
-    } = useForm(initialPost, postSchema, handleUpdatePost);
+    } = useForm(initialPost, postSchema, (data) => { handleUpdatePost(data, id) });
 
     useEffect(() => {
-        if (postDetailsData && postDetailsData.length > 0) {
-            console.log(postDetailsData);
-
+        if (postDetailsData) {
             setData(mapPostToModel(postDetailsData));
         } else {
             handleGetPostById(id)
         }
-    }, [])
+    }, [postDetailsData]);
+
 
     if (isLoading) return <Spinner />
-    if (errors) return <Error errorMessage={error} />
-    if (data && data.length === 0) return <Typography>Something went wrong</Typography>
+    if (error) return <Error errorMessage={error} />
+    if (data && data.length == 0) return <Typography>Something went wrong</Typography>
     if (data) return (
         <Box>
             <PageHeader title='Edit Post' />
