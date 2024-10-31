@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import React from 'react'
+import React from 'react';
 
 const FormButton = ({
     variant = 'contained',
@@ -8,17 +8,20 @@ const FormButton = ({
     color = 'primary',
     onClick,
     disabled = false,
+    sx,
+    icon,
     node
 }) => {
     return (
         <Button
+            startIcon={icon}
             variant={variant}
             component={component}
             size={size}
             color={color}
             onClick={onClick}
             disabled={disabled}
-            sx={{ m: '5px' }}
+            sx={{ m: '5px', ...sx }}
             fullWidth
         >
             {node}

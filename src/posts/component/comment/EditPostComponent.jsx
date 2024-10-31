@@ -60,10 +60,6 @@ export default function EditPostComponent({ comment }) {
                         user={user}
                     />
                 </DialogContent>
-                {/* <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button type="submit">Subscribe</Button>
-                </DialogActions> */}
             </Dialog>
         </>
     )

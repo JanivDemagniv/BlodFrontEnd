@@ -1,5 +1,6 @@
 import { Box } from "@mui/material"
 import FormButton from "./FormButton";
+import SendIcon from '@mui/icons-material/Send';
 
 const CommentForm = ({
     onSubmit,
@@ -23,15 +24,14 @@ const CommentForm = ({
                 {children}
             </Box>
 
-            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-                <Box>
-                    <FormButton
-                        node='Submit'
-                        onClick={onSubmit}
-                        disabled={!validateForm()}
-                        size='large'
-                    />
-                </Box>
+            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'flex-end' }}>
+                <FormButton sx={{ width: { xs: '100px', md: '200px' } }}
+                    node='Submit'
+                    onClick={onSubmit}
+                    disabled={!validateForm()}
+                    size='large'
+                    icon={<SendIcon />}
+                />
             </Box>
         </Box>
     );

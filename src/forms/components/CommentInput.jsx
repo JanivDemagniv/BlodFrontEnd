@@ -9,10 +9,11 @@ const CommentInput = ({
     label,
     required = true,
     onChange,
-    user
+    user,
+    sx
 }) => {
     return (
-        <Box sx={{ display: 'flex', width: '100%' }}>
+        <Box sx={{ display: 'flex', width: '100%', ...sx }}>
             <Avatar sx={{ alignSelf: 'center' }} src={user ? user.profilePic.url : rplacePic.url} alt={user ? user.profilePic.alt : rplacePic.url} />
             <TextField
                 variant={variant}

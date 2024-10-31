@@ -3,7 +3,8 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import FormButton from './FormButton';
 import LoopIcon from "@mui/icons-material/Loop";
-
+import SendIcon from '@mui/icons-material/Send';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const Form = ({
     title = '',
@@ -37,11 +38,12 @@ const Form = ({
             <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
                 <Box>
                     <FormButton
-                        node='cancel'
+                        node='Cancel'
                         color='error'
                         component='div'
                         variant='outlined'
                         onClick={() => navigate(to)}
+                        icon={<CancelIcon fontSize='small' />}
                     />
                 </Box>
                 <Box>
@@ -54,7 +56,8 @@ const Form = ({
                 </Box>
                 <Box>
                     <FormButton
-                        node='Submit'
+                        node='Send'
+                        icon={<SendIcon />}
                         onClick={onSubmit}
                         disabled={!validateForm()}
                         size='large'
