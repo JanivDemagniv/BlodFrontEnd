@@ -13,7 +13,7 @@ import usePosts from '../../hooks/usePosts';
 export default function ActiveBarCompoenent({ post }) {
     const [isLike, setIsLike] = useState(false);
     const { user } = useCurrentUser();
-    const { handlePostLike } = usePosts();
+    const { handlePostLike, handleDeletePost } = usePosts();
 
     const handleLikeOnScreen = () => {
         setIsLike((p) => !p);
@@ -52,7 +52,7 @@ export default function ActiveBarCompoenent({ post }) {
                 <IconButton onClick={() => { navigate(ROUTES.EDITPOST + '/' + post._id) }} sx={{ color: 'white' }} aria-label='Edit'>
                     <EditIcon />
                 </IconButton>
-                <IconButton sx={{ color: 'white' }} aria-label='Delete'>
+                <IconButton onClick={() => { handleDeletePost(post._id) }} sx={{ color: 'white' }} aria-label='Delete'>
                     <DeleteIcon />
                 </IconButton>
             </Box>

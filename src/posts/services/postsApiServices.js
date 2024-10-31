@@ -87,6 +87,16 @@ const likeComment = async (id, postId) => {
     };
 };
 
+const deletePost = async (id) => {
+    try {
+        const response = await axios.delete(apiUrl + id, id);
+        const data = response.data;
+        return data;
+    } catch (error) {
+        throw new Error(error.message);
+    };
+};
+
 const deleteComment = async (id) => {
     try {
         const response = await axios.delete(apiUrl + 'comments/' + id);
@@ -97,4 +107,4 @@ const deleteComment = async (id) => {
     };
 };
 
-export { getAllPosts, getPost, submitComment, submitNewPost, updatePost, updateComment, likePost, likeComment, deleteComment };
+export { getAllPosts, getPost, submitComment, submitNewPost, updatePost, updateComment, likePost, likeComment, deletePost, deleteComment };
