@@ -66,4 +66,29 @@ const updateComment = async (newComment, commentId) => {
     };
 };
 
-export { getAllPosts, getPost, submitComment, submitNewPost, updatePost, updateComment }
+const likePost = async (id) => {
+    try {
+        const response = await axios.patch(apiUrl + id, id);
+        const data = response.data;
+        return data;
+    } catch (error) {
+        throw new Error(error.message)
+    };
+};
+
+const likeComment = async (id, postId) => {
+    try {
+        console.log(postId);
+
+        let post = { _id: postId }
+        console.log(post);
+
+        const response = await axios.patch(apiUrl + 'comments/' + id, post);
+        const data = response.data;
+        return data;
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+
+export { getAllPosts, getPost, submitComment, submitNewPost, updatePost, updateComment, likePost, likeComment };

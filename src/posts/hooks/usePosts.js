@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useSnack } from "../../providers/SnackBarProvider";
-import { getAllPosts, getPost, submitComment, submitNewPost, updateComment, updatePost } from "../services/postsApiServices";
+import { getAllPosts, getPost, likeComment, likePost, submitComment, submitNewPost, updateComment, updatePost } from "../services/postsApiServices";
 import normlizePost from "../helpers/normalize/normalizePost";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModule";
@@ -96,5 +96,25 @@ export default function usePosts() {
         };
     }, []);
 
-    return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData, handleNewComment, handleCreatePost, handleUpdatePost, handleUpdateComment };
+    const handlePostLike = useCallback(async (id) => {
+        try {
+            await likePost(id);
+            setSnack('success', 'Like updated');
+        } catch (error) {
+            setError(error);
+            setSnack('error', error.message);
+        };
+    }, []);
+
+    const handleCommentLike = useCallback(async (id, postId) => {
+        try {
+            await likeComment(id, postId);
+            setSnack('success', 'Like updated');
+        } catch (error) {
+            setError(error);
+            setSnack('error', error.message);
+        };
+    }, []);
+
+    return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData, handleNewComment, handleCreatePost, handleUpdatePost, handleUpdateComment, handlePostLike, handleCommentLike };
 };

@@ -8,10 +8,12 @@ import ArticleIcon from '@mui/icons-material/Article';
 import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../../routes/routesModule';
 import { useCurrentUser } from '../../../users/provider/UserProvider';
+import usePosts from '../../hooks/usePosts';
 
 export default function ActiveBarCompoenent({ post }) {
     const [isLike, setIsLike] = useState(false);
     const { user } = useCurrentUser();
+    const { handlePostLike } = usePosts();
 
     const handleLikeOnScreen = () => {
         setIsLike((p) => !p);
@@ -36,7 +38,7 @@ export default function ActiveBarCompoenent({ post }) {
             p: '1%'
         }}>
             <Box>
-                <IconButton onClick={() => handleLikeOnScreen()} sx={{ color: 'white' }} aria-label="add to favorites">
+                <IconButton onClick={() => { handleLikeOnScreen(); handlePostLike(post._id) }} sx={{ color: 'white' }} aria-label="add to favorites">
                     <FavoriteIcon sx={{ color: isLike ? 'red' : 'white' }} />
                 </IconButton>
                 <IconButton sx={{ color: 'white' }} aria-label="share">
