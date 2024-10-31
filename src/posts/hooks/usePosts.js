@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useSnack } from "../../providers/SnackBarProvider";
-import { getAllPosts, getPost, likeComment, likePost, submitComment, submitNewPost, updateComment, updatePost } from "../services/postsApiServices";
+import { deleteComment, getAllPosts, getPost, likeComment, likePost, submitComment, submitNewPost, updateComment, updatePost } from "../services/postsApiServices";
 import normlizePost from "../helpers/normalize/normalizePost";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModule";
@@ -116,5 +116,15 @@ export default function usePosts() {
         };
     }, []);
 
-    return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData, handleNewComment, handleCreatePost, handleUpdatePost, handleUpdateComment, handlePostLike, handleCommentLike };
+    const handleDeleteComment = useCallback(async (id, postId) => {
+        try {
+            await deleteComment(id, postId);
+            setSnack('success', 'Comment has beeb deleted')
+        } catch (error) {
+            setError(error);
+            setSnack('error', error.message)
+        };
+    }, []);
+
+    return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData, handleNewComment, handleCreatePost, handleUpdatePost, handleUpdateComment, handlePostLike, handleCommentLike, handleDeleteComment };
 };

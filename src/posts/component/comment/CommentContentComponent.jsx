@@ -11,7 +11,7 @@ export default function CommentContentComponent({ comment, user }) {
     console.log(comment);
 
     const [isLike, setIsLike] = useState(false);
-    const { handleCommentLike } = usePosts();
+    const { handleCommentLike, handleDeleteComment } = usePosts();
 
     const handleLikeColor = () => {
         setIsLike((p) => !p);
@@ -50,9 +50,10 @@ export default function CommentContentComponent({ comment, user }) {
                             </IconButton> : null}
                             {user && user._id || user && user.isAdmin === comment.creator._id ?
                                 <EditPostComponent comment={comment} /> : null}
-                            {user || user && user.isAdmin && user._id === comment.creator._id ? <IconButton size='small'>
-                                <DeleteIcon sx={{ color: 'white' }} fontSize="small" />
-                            </IconButton> : null}
+                            {user || user && user.isAdmin && user._id === comment.creator._id ?
+                                <IconButton onClick={() => { handleDeleteComment(comment._id, comment.post) }} size='small'>
+                                    <DeleteIcon sx={{ color: 'white' }} fontSize="small" />
+                                </IconButton> : null}
                         </Box>
                     </>
                 }

@@ -78,11 +78,7 @@ const likePost = async (id) => {
 
 const likeComment = async (id, postId) => {
     try {
-        console.log(postId);
-
         let post = { _id: postId }
-        console.log(post);
-
         const response = await axios.patch(apiUrl + 'comments/' + id, post);
         const data = response.data;
         return data;
@@ -91,4 +87,14 @@ const likeComment = async (id, postId) => {
     };
 };
 
-export { getAllPosts, getPost, submitComment, submitNewPost, updatePost, updateComment, likePost, likeComment };
+const deleteComment = async (id) => {
+    try {
+        const response = await axios.delete(apiUrl + 'comments/' + id);
+        const data = response.data;
+        return data
+    } catch (error) {
+        throw new Error(error.message);
+    };
+};
+
+export { getAllPosts, getPost, submitComment, submitNewPost, updatePost, updateComment, likePost, likeComment, deleteComment };
