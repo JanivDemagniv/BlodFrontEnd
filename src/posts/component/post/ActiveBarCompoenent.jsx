@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../../routes/routesModule';
 import { useCurrentUser } from '../../../users/provider/UserProvider';
 import usePosts from '../../hooks/usePosts';
+import DeleteDialogComponent from './DeleteDialogComponent';
 
 export default function ActiveBarCompoenent({ post }) {
     const [isLike, setIsLike] = useState(false);
@@ -52,9 +53,7 @@ export default function ActiveBarCompoenent({ post }) {
                 <IconButton onClick={() => { navigate(ROUTES.EDITPOST + '/' + post._id) }} sx={{ color: 'white' }} aria-label='Edit'>
                     <EditIcon />
                 </IconButton>
-                <IconButton onClick={() => { handleDeletePost(post._id) }} sx={{ color: 'white' }} aria-label='Delete'>
-                    <DeleteIcon />
-                </IconButton>
+                <DeleteDialogComponent handleDelete={handleDeletePost} postID={post._id} />
             </Box>
         </CardActions>
     )
