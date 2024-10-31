@@ -14,7 +14,8 @@ export default function DeleteDialogComponent({ handleDelete, postID }) {
     }
 
     const handleApproveDelete = (postID) => {
-        handleDelete(postID)
+        handleDelete(postID);
+        setOpen(false)
     }
 
     return (
