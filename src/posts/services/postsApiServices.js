@@ -88,7 +88,7 @@ const likeComment = async (id, postId) => {
         return data;
     } catch (error) {
         throw new Error(error.message)
-    }
-}
+    };
+};
 
 export { getAllPosts, getPost, submitComment, submitNewPost, updatePost, updateComment, likePost, likeComment };
