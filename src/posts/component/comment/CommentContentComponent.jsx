@@ -4,6 +4,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditPostComponent from './EditPostComponent';
 import usePosts from '../../hooks/usePosts';
+import DeleteCommentDialogComponent from './DeleteCommentDialogComponent';
 
 
 
@@ -51,9 +52,7 @@ export default function CommentContentComponent({ comment, user }) {
                             {user && user._id || user && user.isAdmin === comment.creator._id ?
                                 <EditPostComponent comment={comment} /> : null}
                             {user || user && user.isAdmin && user._id === comment.creator._id ?
-                                <IconButton onClick={() => { handleDeleteComment(comment._id, comment.post) }} size='small'>
-                                    <DeleteIcon sx={{ color: 'white' }} fontSize="small" />
-                                </IconButton> : null}
+                                <DeleteCommentDialogComponent handleDelete={handleDeleteComment} postID={comment.post} commentId={comment._id} /> : null}
                         </Box>
                     </>
                 }
