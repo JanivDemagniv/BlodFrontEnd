@@ -129,9 +129,9 @@ export default function usePosts() {
         setIsLoading(false);
     }, [])
 
-    const handleDeleteComment = useCallback(async (id, postId) => {
+    const handleDeleteComment = useCallback(async (commentId, postId) => {
         try {
-            await deleteComment(id, postId);
+            await deleteComment(commentId, postId);
             setSnack('success', 'Comment has beeb deleted')
         } catch (error) {
             setError(error);

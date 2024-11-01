@@ -97,9 +97,9 @@ const deletePost = async (id) => {
     };
 };
 
-const deleteComment = async (id) => {
+const deleteComment = async (commentId, postId) => {
     try {
-        const response = await axios.delete(apiUrl + 'comments/' + id);
+        const response = await axios.delete(apiUrl + postId + '/comments/' + commentId);
         const data = response.data;
         return data
     } catch (error) {
