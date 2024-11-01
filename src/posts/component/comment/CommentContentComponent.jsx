@@ -1,7 +1,6 @@
 import { Avatar, Box, Divider, IconButton, ListItem, ListItemAvatar, ListItemText, Paper, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import DeleteIcon from '@mui/icons-material/Delete';
 import EditPostComponent from './EditPostComponent';
 import usePosts from '../../hooks/usePosts';
 import DeleteCommentDialogComponent from './DeleteCommentDialogComponent';
@@ -9,8 +8,6 @@ import DeleteCommentDialogComponent from './DeleteCommentDialogComponent';
 
 
 export default function CommentContentComponent({ comment, user }) {
-    console.log(comment);
-
     const [isLike, setIsLike] = useState(false);
     const { handleCommentLike, handleDeleteComment } = usePosts();
 
@@ -49,9 +46,9 @@ export default function CommentContentComponent({ comment, user }) {
                             {user ? <IconButton onClick={() => { handleLikeColor(); handleCommentLike(comment._id, comment.post) }} size='small'>
                                 <FavoriteIcon sx={{ color: isLike ? 'red' : 'white' }} fontSize="small" />
                             </IconButton> : null}
-                            {user && user._id || user && user.isAdmin === comment.creator._id ?
+                            {user && user.isAdmin || user && user._id === comment.creator._id ?
                                 <EditPostComponent comment={comment} /> : null}
-                            {user || user && user.isAdmin && user._id === comment.creator._id ?
+                            {user && user.isAdmin || user && user._id === comment.creator._id ?
                                 <DeleteCommentDialogComponent handleDelete={handleDeleteComment} postID={comment.post} commentId={comment._id} /> : null}
                         </Box>
                     </>
