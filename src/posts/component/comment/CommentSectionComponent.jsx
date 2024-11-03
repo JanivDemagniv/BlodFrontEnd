@@ -8,10 +8,10 @@ import initialComment from '../../helpers/initialForms/initialComment';
 import commentSchema from '../../models/commentSchema';
 import CommentFormComponent from './CommentFormComponent';
 
-export default function CommentSectionComponent({ postId }) {
+export default function CommentSectionComponent({ postId, handleNewComment }) {
     const { user } = useCurrentUser();
 
-    const { handleNewComment } = usePosts();
+    // const { handleNewComment } = usePosts();
 
     const {
         data,

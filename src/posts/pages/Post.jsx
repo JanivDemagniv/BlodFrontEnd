@@ -10,7 +10,7 @@ import { useTheme } from '../../providers/CustomTheme';
 
 export default function Post() {
     const { id } = useParams()
-    const { isLoading, error, handleGetPostById, postDetailsData } = usePosts();
+    const { isLoading, error, handleGetPostById, postDetailsData, handleCommentLike, handleDeleteComment, handleUpdateComment, handleNewComment } = usePosts();
     const { isDark } = useTheme();
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export default function Post() {
                 </Box>
             </Box>
             <Box>
-                <CommentsComponent post={postDetailsData} expand={true} />
+                <CommentsComponent post={postDetailsData} expand={true} handleEdit={handleUpdateComment} handleLike={handleCommentLike} handleDelete={handleDeleteComment} handleNewComment={handleNewComment} />
             </Box>
         </Box>
     )

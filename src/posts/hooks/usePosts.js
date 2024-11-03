@@ -4,7 +4,6 @@ import { deleteComment, deletePost, getAllPosts, getPost, likeComment, likePost,
 import normlizePost from "../helpers/normalize/normalizePost";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModule";
-import mapPostToModel from "../helpers/normalize/mapPostToModel";
 import normalizeComment from "../helpers/normalize/normalizeComment";
 
 export default function usePosts() {
@@ -58,20 +57,32 @@ export default function usePosts() {
     const handleNewComment = useCallback(async (comment, postId) => {
         setIsLoading(true);
         try {
-            await submitComment(comment);
+            let newComment = await submitComment(comment);
             setSnack('success', 'Comment submit successfully');
-            navigate(ROUTES.POSTINFO + '/' + postId);
+            if (postDetailsData) {
+                setPostDetailsData(prev => ({
+                    ...prev,
+                    comments: [...(prev.comments || []), newComment]
+                }));
+            }
+            if (postsData) {
+                setPostsData(prevPostsData =>
+                    prevPostsData.map(post =>
+                        post._id === postId
+                            ? { ...post, comments: [...post.comments, newComment] }
+                            : post
+                    )
+                )
+            }
         } catch (error) {
             setError(error.message);
             setSnack('error', error.message);
         };
         setIsLoading(false)
-    }, []);
+    }, [setPostDetailsData]);
 
     const handleUpdatePost = useCallback(async (post, postId) => {
         setIsLoading(true);
-        console.log(postId);
-
         try {
             let newPost = normlizePost(post);
             await updatePost(newPost, postId);
@@ -94,6 +105,7 @@ export default function usePosts() {
             setError(error.message);
             setSnack('error', error.message);
         };
+        setIsLoading(false)
     }, []);
 
     const handlePostLike = useCallback(async (id) => {
@@ -130,13 +142,15 @@ export default function usePosts() {
     }, [])
 
     const handleDeleteComment = useCallback(async (commentId, postId) => {
+        setIsLoading(true);
         try {
             await deleteComment(commentId, postId);
-            setSnack('success', 'Comment has beeb deleted')
+            setSnack('success', 'Comment has beeb deleted');
         } catch (error) {
             setError(error);
             setSnack('error', error.message)
         };
+        setIsLoading(false);
     }, []);
 
     return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData, handleNewComment, handleCreatePost, handleUpdatePost, handleUpdateComment, handlePostLike, handleCommentLike, handleDeleteComment, handleDeletePost };

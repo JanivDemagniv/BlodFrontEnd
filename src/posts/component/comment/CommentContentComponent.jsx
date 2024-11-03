@@ -2,29 +2,26 @@ import { Avatar, Box, Divider, IconButton, ListItem, ListItemAvatar, ListItemTex
 import React, { useEffect, useState } from 'react'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import EditPostComponent from './EditPostComponent';
-import usePosts from '../../hooks/usePosts';
 import DeleteCommentDialogComponent from './DeleteCommentDialogComponent';
 
 
 
-export default function CommentContentComponent({ comment, user }) {
+export default function CommentContentComponent({ comment, user, handleLike, handleDelete, handleEdit }) {
     const [isLike, setIsLike] = useState(false);
-    const { handleCommentLike, handleDeleteComment } = usePosts();
 
     const handleLikeColor = () => {
         setIsLike((p) => !p);
     };
 
     useEffect(() => {
-        if (user) {
+        if (user && comment.likes) { // Check if comment.likes is defined
             if (comment.likes.includes(user._id)) {
-                setIsLike(true)
-            }
-            if (!comment.likes.includes(user._id)) {
-                setIsLike(false)
+                setIsLike(true);
+            } else {
+                setIsLike(false);
             }
         }
-    }, [])
+    }, [user, comment.likes]);
 
     return (
         <ListItem alignItems="flex-start">
@@ -43,13 +40,13 @@ export default function CommentContentComponent({ comment, user }) {
                         </Typography>
                         <Divider />
                         <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                            {user ? <IconButton onClick={() => { handleLikeColor(); handleCommentLike(comment._id, comment.post) }} size='small'>
+                            {user ? <IconButton onClick={() => { handleLikeColor(); handleLike(comment._id, comment.post) }} size='small'>
                                 <FavoriteIcon sx={{ color: isLike ? 'red' : 'white' }} fontSize="small" />
                             </IconButton> : null}
                             {user && user.isAdmin || user && user._id === comment.creator._id ?
-                                <EditPostComponent comment={comment} /> : null}
+                                <EditPostComponent handleEdit={handleEdit} comment={comment} /> : null}
                             {user && user.isAdmin || user && user._id === comment.creator._id ?
-                                <DeleteCommentDialogComponent handleDelete={handleDeleteComment} postID={comment.post} commentId={comment._id} /> : null}
+                                <DeleteCommentDialogComponent handleDelete={handleDelete} postID={comment.post} commentId={comment._id} /> : null}
                         </Box>
                     </>
                 }

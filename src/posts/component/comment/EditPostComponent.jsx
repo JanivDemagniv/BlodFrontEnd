@@ -5,13 +5,11 @@ import CommentFormComponent from './CommentFormComponent';
 import useForm from '../../../forms/hooks/useForm';
 import initialComment from '../../helpers/initialForms/initialComment';
 import commentSchema from '../../models/commentSchema';
-import usePosts from '../../hooks/usePosts';
 import { useCurrentUser } from '../../../users/provider/UserProvider';
 import mapCommentToModel from '../../helpers/normalize/mapTOCommentModel';
 
-export default function EditPostComponent({ comment }) {
+export default function EditPostComponent({ comment, handleEdit }) {
     const [open, setOpen] = useState(false);
-    const { handleUpdateComment } = usePosts();
     const { user } = useCurrentUser();
     const {
         data,
@@ -21,7 +19,8 @@ export default function EditPostComponent({ comment }) {
         validateForm,
         onSubmit
     } = useForm(initialComment, commentSchema, (data) => {
-        handleUpdateComment(data, comment);
+        handleEdit(data, comment);
+        setOpen(false)
     })
 
     const handleClickOpen = () => {
@@ -35,7 +34,7 @@ export default function EditPostComponent({ comment }) {
 
 
     useEffect(() => {
-        setData(mapCommentToModel(comment))
+        setData(mapCommentToModel(comment));
     }, [])
     return (
         <>

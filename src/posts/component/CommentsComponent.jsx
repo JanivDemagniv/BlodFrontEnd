@@ -7,7 +7,7 @@ import { useTheme } from '../../providers/CustomTheme';
 import { useCurrentUser } from '../../users/provider/UserProvider';
 import CommentSectionComponent from './comment/CommentSectionComponent';
 
-export default function CommentsComponent({ post, expand = false }) {
+export default function CommentsComponent({ post, expand = false, handleLike, handleDelete, handleEdit, handleNewComment }) {
     const { isDark } = useTheme();
     const { user } = useCurrentUser();
 
@@ -23,9 +23,9 @@ export default function CommentsComponent({ post, expand = false }) {
                 </AccordionSummary>
                 <AccordionDetails>
                     <List sx={{ width: '100%', bgcolor: 'background.defult', color: '#000' }}>
-                        {post.comments.map((comment) => <CommentContentComponent comment={comment} key={comment._id} user={user} />)}
+                        {post.comments.map((comment) => <CommentContentComponent handleEdit={handleEdit} handleLike={handleLike} handleDelete={handleDelete} comment={comment} key={comment._id} user={user} />)}
                     </List>
-                    {user ? <CommentSectionComponent postId={post._id} /> : null}
+                    {user ? <CommentSectionComponent postId={post._id} handleNewComment={handleNewComment} /> : null}
                 </AccordionDetails>
             </Accordion>
 
