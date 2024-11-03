@@ -6,7 +6,9 @@ const ROUTES = {
     LOGIN: '/login',
     SIGNUP: '/signup',
     ADDPOST: '/addnewpost',
-    EDITPOST: '/editpost'
+    EDITPOST: '/editpost',
+    LIKEDPOSTS: '/likedposts',
+    MYPOSTS: '/myposts'
 }
 
 export default ROUTES

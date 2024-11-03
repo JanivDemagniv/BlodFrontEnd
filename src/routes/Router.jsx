@@ -9,6 +9,8 @@ import Posts from '../posts/pages/Posts'
 import Post from '../posts/pages/Post'
 import AddPost from '../posts/pages/AddPost'
 import EditPost from '../posts/pages/EditPost'
+import LikedPosts from '../posts/pages/LikedPosts'
+import MyPosts from '../posts/pages/MyPosts'
 
 export default function Router() {
     return (
@@ -20,6 +22,8 @@ export default function Router() {
             <Route path={ROUTES.LOGIN} element={<LoginPage />} />
             <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
             <Route path={ROUTES.ADDPOST} element={<AddPost />} />
+            <Route path={ROUTES.LIKEDPOSTS} element={<LikedPosts />} />
+            <Route path={ROUTES.MYPOSTS} element={<MyPosts />} />
             <Route path={ROUTES.EDITPOST + '/:id'} element={<EditPost />} />
             <Route path='*' element={<Error />} />
         </Routes>
