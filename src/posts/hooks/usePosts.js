@@ -123,13 +123,23 @@ export default function usePosts() {
     }, []);
 
     const handlePostLike = useCallback(async (id) => {
+        setIsLoading(true)
         try {
-            await likePost(id);
+            let likedPost = await likePost(id);
             setSnack('success', 'Like updated');
+            setPostsData((prevPosts) => {
+                return prevPosts.map((post) => {
+                    if (likedPost._id === post._id) {
+                        return likedPost;
+                    }
+                    return post;
+                });
+            });
         } catch (error) {
             setError(error);
             setSnack('error', error.message);
         };
+        setIsLoading(false)
     }, []);
 
     const handleCommentLike = useCallback(async (id, postId) => {
