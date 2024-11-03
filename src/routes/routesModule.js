@@ -8,7 +8,8 @@ const ROUTES = {
     ADDPOST: '/addnewpost',
     EDITPOST: '/editpost',
     LIKEDPOSTS: '/likedposts',
-    MYPOSTS: '/myposts'
+    MYPOSTS: '/myposts',
+    MYPROFILE: '/myprofile'
 }
 
 export default ROUTES

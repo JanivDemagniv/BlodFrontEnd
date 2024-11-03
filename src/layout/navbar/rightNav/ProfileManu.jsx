@@ -4,11 +4,14 @@ import { useState } from 'react'
 import { useCurrentUser } from '../../../users/provider/UserProvider';
 import { rplacePic } from '../../../helpers/replaceValues';
 import useUsers from '../../../users/hooks/useUsers';
+import { useNavigate } from 'react-router-dom';
+import ROUTES from '../../../routes/routesModule';
 
 export default function ProfileManu() {
     const [anchorElUser, setAnchorElUser] = useState(null);
     const { user } = useCurrentUser();
     const { handleLogout } = useUsers();
+    const navigate = useNavigate();
 
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
@@ -41,7 +44,7 @@ export default function ProfileManu() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
             >
-                <MenuItem>Profile</MenuItem>
+                <MenuItem onClick={() => navigate(ROUTES.MYPROFILE)}>Profile</MenuItem>
                 <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
             </Menu>
         </Box>
