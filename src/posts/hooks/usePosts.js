@@ -98,9 +98,23 @@ export default function usePosts() {
     const handleUpdateComment = useCallback(async (newComment, comment) => {
         setIsLoading(true);
         try {
-            await updateComment(normalizeComment(comment, newComment), comment._id);
+            let updatedCommets = await updateComment(normalizeComment(comment, newComment), comment._id);
             setSnack('success', 'Comment has been updated');
-            navigate(ROUTES.POSTINFO + '/' + newComment.post);
+            if (postDetailsData) {
+                setPostDetailsData(prev => ({
+                    ...prev,
+                    comments: updatedCommets
+                }));
+            }
+            if (postsData) {
+                setPostsData(prevPostsData =>
+                    prevPostsData.map(post =>
+                        post._id === comment.post
+                            ? { ...post, comments: updatedCommets }
+                            : post
+                    )
+                )
+            }
         } catch (error) {
             setError(error.message);
             setSnack('error', error.message);
@@ -109,6 +123,7 @@ export default function usePosts() {
     }, []);
 
     const handlePostLike = useCallback(async (id) => {
+        setIsLoading(true)
         try {
             await likePost(id);
             setSnack('success', 'Like updated');
@@ -116,6 +131,7 @@ export default function usePosts() {
             setError(error);
             setSnack('error', error.message);
         };
+        setIsLoading(false)
     }, []);
 
     const handleCommentLike = useCallback(async (id, postId) => {
