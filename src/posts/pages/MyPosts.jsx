@@ -7,6 +7,8 @@ import Spinner from '../../components/Spinner';
 import Error from '../../components/Error';
 import AddNewPostButton from '../component/AddNewPostButton';
 import { useCurrentUser } from '../../users/provider/UserProvider';
+import { Navigate } from 'react-router-dom';
+import ROUTES from '../../routes/routesModule';
 
 export default function MyPosts() {
     const { postsData, isLoading, error, handleGetAllPosts, handleCommentLike, handleDeleteComment, handleUpdateComment, handleNewComment, handlePostLike, handleDeletePost } = usePosts();
@@ -28,10 +30,11 @@ export default function MyPosts() {
         handleGetAllPosts();
     }, [])
 
+    if (!user || user && !user.isAdmin || user && !user.isCreator) return <Navigate to={ROUTES.ROOT} replace />
     if (isLoading) return <Spinner />
     if (error) return <Error errorMessage={error} />
     if (postsData && postsData.length == 0 || postsData == undefined) return <Typography>There is no posts to display</Typography>
-    if (postsData) return (
+    if (postsData && user && user.isAdmin || postsData && user && user.isCreator) return (
         <Box>
             <PageHeader title='Posts' subtitle='All posts at one place' />
             {currentItem.map((post) => <PostsComponent handleDeleteComment={handleDeleteComment} handleLikeComment={handleCommentLike} handleEditComment={handleUpdateComment} handleNewComment={handleNewComment} handleDeletePost={handleDeletePost} handleLikePost={handlePostLike} post={post} key={post._id} />)}

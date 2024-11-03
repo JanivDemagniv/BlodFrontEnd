@@ -7,9 +7,11 @@ import useForm from '../../forms/hooks/useForm'
 import initialPost from '../helpers/initialForms/initialPost'
 import postSchema from '../models/postSchema'
 import mapPostToModel from '../helpers/normalize/mapPostToModel'
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import Spinner from '../../components/Spinner'
 import Error from '../../components/Error'
+import { useCurrentUser } from '../../users/provider/UserProvider'
+import ROUTES from '../../routes/routesModule'
 
 export default function EditPost() {
     const { id } = useParams();
@@ -23,6 +25,7 @@ export default function EditPost() {
         validateForm,
         onSubmit
     } = useForm(initialPost, postSchema, (data) => { handleUpdatePost(data, id) });
+    const { user } = useCurrentUser();
 
     useEffect(() => {
         if (postDetailsData) {
@@ -32,11 +35,11 @@ export default function EditPost() {
         }
     }, [postDetailsData]);
 
-
+    if (!user || user && !user.isAdmin || user && !user.isCreator) return <Navigate to={ROUTES.ROOT} replace />
     if (isLoading) return <Spinner />
     if (error) return <Error errorMessage={error} />
     if (data && data.length == 0) return <Typography>Something went wrong</Typography>
-    if (data) return (
+    if (data && user && user.isAdmin || user && user.isCreator) return (
         <Box>
             <PageHeader title='Edit Post' />
             <PostForm
