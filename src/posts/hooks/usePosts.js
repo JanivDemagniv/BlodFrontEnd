@@ -123,7 +123,6 @@ export default function usePosts() {
     }, []);
 
     const handlePostLike = useCallback(async (id) => {
-        setIsLoading(true)
         try {
             await likePost(id);
             setSnack('success', 'Like updated');
@@ -131,7 +130,6 @@ export default function usePosts() {
             setError(error);
             setSnack('error', error.message);
         };
-        setIsLoading(false)
     }, []);
 
     const handleCommentLike = useCallback(async (id, postId) => {
