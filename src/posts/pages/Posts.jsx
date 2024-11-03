@@ -9,7 +9,7 @@ import AddNewPostButton from '../component/AddNewPostButton';
 import { useCurrentUser } from '../../users/provider/UserProvider';
 
 export default function Posts() {
-    const { postsData, isLoading, error, handleGetAllPosts, handleCommentLike, handleDeleteComment, handleUpdateComment, handleNewComment } = usePosts();
+    const { postsData, isLoading, error, handleGetAllPosts, handleCommentLike, handleDeleteComment, handleUpdateComment, handleNewComment, handlePostLike, handleDeletePost } = usePosts();
     const [currentPage, setCurrentPage] = useState(1);
     const itemPerPage = 3;
     const indexOfLastItem = currentPage * itemPerPage;
@@ -33,7 +33,7 @@ export default function Posts() {
     if (postsData) return (
         <Box>
             <PageHeader title='Posts' subtitle='All posts at one place' />
-            {currentItem.map((post) => <PostsComponent handleDeleteComment={handleDeleteComment} handleLikeComment={handleCommentLike} handleEditComment={handleUpdateComment} handleNewComment={handleNewComment} post={post} key={post._id} />)}
+            {currentItem.map((post) => <PostsComponent handleDeleteComment={handleDeleteComment} handleLikeComment={handleCommentLike} handleEditComment={handleUpdateComment} handleNewComment={handleNewComment} handleDeletePost={handleDeletePost} handleLikePost={handlePostLike} post={post} key={post._id} />)}
             <Box sx={{ display: 'flex', justifyContent: 'center', p: '20px' }}>
                 <Pagination
                     color="primary"

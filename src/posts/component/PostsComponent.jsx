@@ -5,7 +5,7 @@ import HeaderComponent from './post/HeaderComponent';
 import ContentComponent from './post/ContentComponent';
 import ActiveBarCompoenent from './post/ActiveBarCompoenent';
 
-export default function PostComponent({ post, handleLikeComment, handleEditComment, handleDeleteComment, handleNewComment }) {
+export default function PostComponent({ post, handleLikeComment, handleEditComment, handleDeleteComment, handleNewComment, handleDeletePost, handleLikePost }) {
 
 
     return (
@@ -13,7 +13,7 @@ export default function PostComponent({ post, handleLikeComment, handleEditComme
             <HeaderComponent post={post} />
             <ContentComponent post={post} />
             {post.comments.length < 0 ? <></> : <CommentsComponent handleDelete={handleDeleteComment} handleLike={handleLikeComment} handleEdit={handleEditComment} handleNewComment={handleNewComment} post={post} />}
-            <ActiveBarCompoenent post={post} />
+            <ActiveBarCompoenent handleDeletePost={handleDeletePost} handleLikePost={handleLikePost} post={post} />
         </Card>
     );
 }

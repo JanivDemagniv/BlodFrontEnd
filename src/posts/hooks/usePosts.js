@@ -133,13 +133,15 @@ export default function usePosts() {
         try {
             await deletePost(id);
             setSnack('success', 'Post has been deleted');
-            navigate(ROUTES.ROOT);
+            setPostsData((prevPosts) => {
+                return prevPosts.filter((post) => post._id !== id);
+            });
         } catch (error) {
             setError(error);
             setSnack('error', error.message);
         };
         setIsLoading(false);
-    }, [])
+    }, [setPostsData, postsData])
 
     const handleDeleteComment = useCallback(async (commentId, postId) => {
         setIsLoading(true);
