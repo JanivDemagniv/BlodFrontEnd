@@ -62,14 +62,14 @@ export default function usePosts() {
             if (postDetailsData) {
                 setPostDetailsData(prev => ({
                     ...prev,
-                    comments: [...(prev.comments || []), newComment]
+                    comments: newComment
                 }));
             }
             if (postsData) {
                 setPostsData(prevPostsData =>
                     prevPostsData.map(post =>
                         post._id === postId
-                            ? { ...post, comments: [...post.comments, newComment] }
+                            ? { ...post, comments: newComment }
                             : post
                     )
                 )
@@ -79,7 +79,7 @@ export default function usePosts() {
             setSnack('error', error.message);
         };
         setIsLoading(false)
-    }, [setPostDetailsData]);
+    }, [postDetailsData, postsData, setPostDetailsData]);
 
     const handleUpdatePost = useCallback(async (post, postId) => {
         setIsLoading(true);
@@ -146,12 +146,30 @@ export default function usePosts() {
         try {
             await deleteComment(commentId, postId);
             setSnack('success', 'Comment has beeb deleted');
+            if (postDetailsData) {
+                setPostDetailsData(prev => {
+                    const newComments = prev.comments.filter(comment => comment._id !== commentId);
+                    return {
+                        ...prev,
+                        comments: newComments
+                    };
+                });
+            }
+            if (postsData) {
+                setPostsData(prevPostsData =>
+                    prevPostsData.map(post =>
+                        post._id === postId
+                            ? { ...post, comments: post.comments.filter(comment => comment._id !== commentId) }
+                            : post
+                    )
+                );
+            }
         } catch (error) {
             setError(error);
             setSnack('error', error.message)
         };
         setIsLoading(false);
-    }, []);
+    }, [postDetailsData, postsData, setPostDetailsData, setPostsData]);
 
     return { handleGetAllPosts, postsData, isLoading, error, handleGetPostById, postDetailsData, handleNewComment, handleCreatePost, handleUpdatePost, handleUpdateComment, handlePostLike, handleCommentLike, handleDeleteComment, handleDeletePost };
 };
