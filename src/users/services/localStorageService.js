@@ -1,6 +1,6 @@
 import { jwtDecode } from "jwt-decode"
 
-const TOKEN = 'user token';
+const TOKEN = 'user webtoken';
 
 const setTokenInLocalStorage = (token) => {
     localStorage.setItem(TOKEN, token);
