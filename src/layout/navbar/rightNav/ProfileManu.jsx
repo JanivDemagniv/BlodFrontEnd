@@ -1,4 +1,4 @@
-import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
+import { Avatar, Box, Divider, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 import React from 'react'
 import { useState } from 'react'
 import { useCurrentUser } from '../../../users/provider/UserProvider';
@@ -29,7 +29,7 @@ export default function ProfileManu() {
                 </IconButton>
             </Tooltip>
             <Menu
-                sx={{ mt: '45px' }}
+                sx={{ mt: '45px', width: '100%' }}
                 anchorEl={anchorElUser}
                 anchorOrigin={{
                     vertical: 'top',
@@ -45,6 +45,7 @@ export default function ProfileManu() {
                 onClose={handleCloseUserMenu}
             >
                 <MenuItem onClick={() => navigate(ROUTES.MYPROFILE)}>Profile</MenuItem>
+                <Divider sx={{ width: '90%', m: '0 auto' }} />
                 <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
             </Menu>
         </Box>
