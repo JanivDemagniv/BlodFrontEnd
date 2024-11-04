@@ -8,10 +8,12 @@ import PageHeader from '../../components/PageHeader';
 import { capitalizeWords } from '../../helpers/generalFunctions';
 import UserPageActiveBar from '../components/userPage/UserPageActiveBar';
 import { getUser } from '../services/localStorageService';
+import { useTheme } from '../../providers/CustomTheme';
 
 export default function UserDetails() {
     const { user } = useCurrentUser();
     const { isLoading, error, handleGetUserById, userDeatails } = useUsers();
+    const { isDark } = useTheme();
 
     useEffect(() => {
         if (user) {
@@ -34,7 +36,7 @@ export default function UserDetails() {
                     <Box sx={{ width: { xs: '100%', md: '620px' }, height: '200px', overflow: 'hidden', borderRadius: '5px' }}>
                         <Box sx={{ width: '100%', height: '100%', objectFit: 'cover' }} component='img' src={userDeatails.profilePic.url} alt={userDeatails.profilePic.alt} />
                     </Box>
-                    <Box sx={{ bgcolor: '#ff9800', p: '10px', borderRadius: '5px', mt: '10px', width: { xs: '94%', md: '600px' } }}>
+                    <Box sx={{ bgcolor: isDark ? '#90A4AE' : '#ff9800', p: '10px', borderRadius: '5px', mt: '10px', width: { xs: '94%', md: '600px' } }}>
                         <Typography>Username: {capitalizeWords(userDeatails.userName)}</Typography>
                         <Typography>Email : {userDeatails.email}</Typography>
                         <Typography>Creator? {userDeatails && user.isCreator ? 'Yes' : 'No'}</Typography>
