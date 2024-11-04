@@ -9,7 +9,8 @@ const ROUTES = {
     EDITPOST: '/editpost',
     LIKEDPOSTS: '/likedposts',
     MYPOSTS: '/myposts',
-    MYPROFILE: '/myprofile'
+    MYPROFILE: '/myprofile',
+    EDITPROFILE: '/editmyprofile'
 }
 
 export default ROUTES

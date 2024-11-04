@@ -32,4 +32,14 @@ const getUserById = async (userId) => {
     };
 };
 
-export { login, signup, getUserById }
+const editUser = async (userId, userUpdated) => {
+    try {
+        const response = await axios.put(apiUrl + '/' + userId, userUpdated);
+        const data = response.data;
+        return data;
+    } catch (error) {
+        throw new Error(error.message);
+    };
+};
+
+export { login, signup, getUserById, editUser }

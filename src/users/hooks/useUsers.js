@@ -1,11 +1,12 @@
 import { useCallback, useState } from "react";
 import { useCurrentUser } from "../provider/UserProvider";
 import { useSnack } from "../../providers/SnackBarProvider";
-import { getUserById, login, signup } from "../services/userApiServices";
+import { editUser, getUserById, login, signup } from "../services/userApiServices";
 import { getUser, removeToken, setTokenInLocalStorage } from "../services/localStorageService";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModule";
 import normalizeUser from "../helpers/normlization/normalizeUser";
+import mapUserToModel from "../helpers/normlization/mapUserToModel";
 
 export default function useUsers() {
     const [isLoading, setIsLoading] = useState(true);
@@ -63,9 +64,24 @@ export default function useUsers() {
             setSnack('error', error.message);
         }
         setIsLoading(false);
+    }, []);
+
+    const handleUpdateUser = useCallback(async (userId, UserUpdated) => {
+        setIsLoading(true)
+        try {
+            const userUpdatedModeled = mapUserToModel(UserUpdated);
+            const newUserInfo = await editUser(userId, userUpdatedModeled);
+            setUserDetails(newUserInfo);
+            setSnack('success', 'Your details has been updated');
+            navigate(ROUTES.MYPROFILE);
+        } catch (error) {
+            setError(error);
+            setSnack('error', error.message)
+        }
+        setIsLoading(false)
     }, [])
 
     return {
-        isLoading, error, handleLogin, handleLogout, handleSignup, handleGetUserById, userDeatails
+        isLoading, error, handleLogin, handleLogout, handleSignup, handleGetUserById, userDeatails, handleUpdateUser
     }
 }

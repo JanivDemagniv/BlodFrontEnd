@@ -12,6 +12,7 @@ import EditPost from '../posts/pages/EditPost'
 import LikedPosts from '../posts/pages/LikedPosts'
 import MyPosts from '../posts/pages/MyPosts'
 import UserDetails from '../users/pages/UserDetails'
+import EditProfilePage from '../users/pages/EditProfilePage'
 
 export default function Router() {
     return (
@@ -27,6 +28,7 @@ export default function Router() {
             <Route path={ROUTES.MYPOSTS} element={<MyPosts />} />
             <Route path={ROUTES.EDITPOST + '/:id'} element={<EditPost />} />
             <Route path={ROUTES.MYPROFILE} element={<UserDetails />} />
+            <Route path={ROUTES.EDITPROFILE} element={<EditProfilePage />} />
             <Route path='*' element={<Error />} />
         </Routes>
     )
