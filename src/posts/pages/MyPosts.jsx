@@ -30,7 +30,7 @@ export default function MyPosts() {
         handleGetAllPosts();
     }, [])
 
-    if (!user || user && !user.isAdmin || user && !user.isCreator) return <Navigate to={ROUTES.ROOT} replace />
+    if (!user || user && !user.isAdmin && !user.isCreator) return <Navigate to={ROUTES.ROOT} replace />
     if (isLoading) return <Spinner />
     if (error) return <Error errorMessage={error} />
     if (postsData && postsData.length == 0 || postsData == undefined) return <Typography>There is no posts to display</Typography>

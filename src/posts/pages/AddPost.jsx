@@ -23,7 +23,7 @@ export default function AddPost() {
     const { user } = useCurrentUser();
 
     if (!user) return <Navigate to={ROUTES.ROOT} replace />
-    if (user && !user.isCreator || user && !user.isAdmin) return <Navigate to={ROUTES.ROOT} replace />
+    if (user && !user.isCreator && !user.isAdmin) return <Navigate to={ROUTES.ROOT} replace />
     if (user && user.isCreator || user && user.isAdmin) return (
         <Box>
             <PageHeader title='add new post' subtitle='New post' />
