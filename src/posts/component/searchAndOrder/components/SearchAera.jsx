@@ -24,7 +24,7 @@ export default function SearchAera() {
 
 
     return (
-        <FormControl>
+        <FormControl sx={{ width: { xs: '150px', md: '250px' } }}>
             <OutlinedInput
                 size='small'
                 placeholder='Search'

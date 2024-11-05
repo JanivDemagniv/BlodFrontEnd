@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PostsComponent from '../component/PostsComponent'
-import { Box, FormControl, FormControlLabel, InputAdornment, InputLabel, MenuItem, OutlinedInput, Pagination, Select, Switch, Typography } from '@mui/material';
+import { Box, Pagination, Typography } from '@mui/material';
 import PageHeader from '../../components/PageHeader';
 import usePosts from '../hooks/usePosts';
 import Spinner from '../../components/Spinner';
@@ -8,15 +8,14 @@ import Error from '../../components/Error';
 import AddNewPostButton from '../component/AddNewPostButton';
 import { useCurrentUser } from '../../users/provider/UserProvider';
 import ListComponent from '../component/ListComponent';
-import SearchIcon from '@mui/icons-material/Search';
 import useSearch from '../hooks/useSearch';
 import { useSearchParams } from 'react-router-dom';
 import SearchAndOrderComponent from '../component/searchAndOrder/SearchAndOrderComponent';
 
 export default function Posts() {
     const { postsData, isLoading, error, handleGetAllPosts, handleCommentLike, handleDeleteComment, handleUpdateComment, handleNewComment, handlePostLike, handleDeletePost } = usePosts();
-    const [currentPage, setCurrentPage] = useState(1);
     const { isList, handleToggle, parameter, handleParameter, handleSearch } = useSearch();
+    const [currentPage, setCurrentPage] = useState(1);
     const itemPerPage = isList ? 10 : 3;
     const indexOfLastItem = currentPage * itemPerPage;
     const indexOfFirstItem = indexOfLastItem - itemPerPage;

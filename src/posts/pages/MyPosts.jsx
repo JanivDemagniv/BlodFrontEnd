@@ -7,21 +7,26 @@ import Spinner from '../../components/Spinner';
 import Error from '../../components/Error';
 import AddNewPostButton from '../component/AddNewPostButton';
 import { useCurrentUser } from '../../users/provider/UserProvider';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useSearchParams } from 'react-router-dom';
 import ROUTES from '../../routes/routesModule';
 import ListComponent from '../component/ListComponent';
+import useSearch from '../hooks/useSearch';
+import SearchAndOrderComponent from '../component/searchAndOrder/SearchAndOrderComponent';
 
 export default function MyPosts() {
     const { postsData, isLoading, error, handleGetAllPosts, handleCommentLike, handleDeleteComment, handleUpdateComment, handleNewComment, handlePostLike, handleDeletePost } = usePosts();
     const [currentPage, setCurrentPage] = useState(1);
-    const [isList, setIsList] = useState(false)
+    const { isList, handleToggle, parameter, handleParameter, handleSearch } = useSearch();
     const itemPerPage = 3;
     const indexOfLastItem = currentPage * itemPerPage;
     const indexOfFirstItem = indexOfLastItem - itemPerPage;
     const { user } = useCurrentUser();
+    const [searchParams] = useSearchParams();
+    const query = searchParams.get('query' || '');
 
-    const myPosts = postsData.filter((post) => post.creator._id === user._id)
-    const currentItem = myPosts.slice(indexOfFirstItem, indexOfLastItem);
+    const myPosts = postsData.filter((post) => post.creator._id === user._id);
+    const searchPosts = query ? handleSearch(parameter, myPosts, query) : myPosts;
+    const currentItem = searchPosts.slice(indexOfFirstItem, indexOfLastItem);
 
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
@@ -38,11 +43,8 @@ export default function MyPosts() {
     if (postsData && postsData.length == 0 || postsData == undefined) return <Typography>There is no posts to display</Typography>
     if (postsData && user && user.isAdmin || postsData && user && user.isCreator) return (
         <Box>
-            <PageHeader title='Posts' subtitle='All posts at one place' />
-            <FormControlLabel
-                control={<Switch onClick={() => { setIsList((p) => !p) }} />}
-                label={isList ? 'Posts' : 'List'}
-            />
+            <PageHeader title='Posts I Created' subtitle=' All Posts I Have Created' />
+            <SearchAndOrderComponent isList={isList} handleToggle={handleToggle} handleParameter={handleParameter} parameter={parameter} />
             <Box sx={{ display: 'flex', flexDirection: isList ? 'row' : 'column', flexWrap: isList ? 'wrap' : 'nowrap' }}>
                 {isList ? currentItem.map((post) => <ListComponent handleDeletePost={handleDeletePost} handleLikePost={handlePostLike} post={post} key={post._id} />) : currentItem.map((post) => <PostsComponent handleDeleteComment={handleDeleteComment} handleLikeComment={handleCommentLike} handleEditComment={handleUpdateComment} handleNewComment={handleNewComment} handleDeletePost={handleDeletePost} handleLikePost={handlePostLike} post={post} key={post._id} />)}
             </Box>

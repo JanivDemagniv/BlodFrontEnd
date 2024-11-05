@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function SearchParameterSelect({ parameter, handleParameter, sx }) {
     return (
-        <FormControl sx={{ ...sx, width: '150px' }}>
+        <FormControl sx={{ ...sx, width: { xs: '100px', md: '150px' }, ml: '5px' }}>
             <InputLabel>Parameter</InputLabel>
             <Select
                 size='small'
