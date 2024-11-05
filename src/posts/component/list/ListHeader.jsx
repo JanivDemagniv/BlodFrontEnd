@@ -4,7 +4,7 @@ import { capitalizeWords } from '../../../helpers/generalFunctions'
 
 export default function ListHeader({ post }) {
     return (
-        <Box sx={{ bgcolor: '#ed6c02' }}>
+        <Box >
             <CardHeader
                 avatar={
                     <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe" src={post.creator.image.url} alt={post.creator.image.alt} />
@@ -12,8 +12,8 @@ export default function ListHeader({ post }) {
                 title={capitalizeWords(post.creator.name)}
                 subheader={post.createdAt}
             />
-            <Typography>{post.title}</Typography>
-            <Typography>{post.subtitle}</Typography>
+            <Typography>{capitalizeWords(post.title)}</Typography>
+            <Typography>{capitalizeWords(post.subtitle)}</Typography>
         </Box>
     )
 }
