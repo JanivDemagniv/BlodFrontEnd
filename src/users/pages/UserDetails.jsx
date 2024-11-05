@@ -33,7 +33,7 @@ export default function UserDetails() {
             <PageHeader title='My Profile' subtitle='If you wanna see your profile, that is the place' />
             <Box sx={{ display: 'flex', flexDirection: 'column', width: { xs: '100%', md: '620px' }, p: { xs: '2px', md: '5px' }, m: '0 auto' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', p: '20px' }}>
-                    <Box sx={{ width: { xs: '100%', md: '620px' }, height: '200px', overflow: 'hidden', borderRadius: '5px' }}>
+                    <Box sx={{ width: { xs: '100%', md: '620px' }, height: '300px', overflow: 'hidden', borderRadius: '5px' }}>
                         <Box sx={{ width: '100%', height: '100%', objectFit: 'cover' }} component='img' src={userDeatails.profilePic.url} alt={userDeatails.profilePic.alt} />
                     </Box>
                     <Box sx={{ bgcolor: isDark ? '#90A4AE' : '#ff9800', p: '10px', borderRadius: '5px', mt: '10px', width: { xs: '94%', md: '600px' } }}>
