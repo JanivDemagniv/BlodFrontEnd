@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PostsComponent from '../component/PostsComponent'
-import { Box, FormControlLabel, Pagination, Switch, Typography } from '@mui/material';
+import { Box, FormControl, FormControlLabel, InputAdornment, InputLabel, MenuItem, OutlinedInput, Pagination, Select, Switch, Typography } from '@mui/material';
 import PageHeader from '../../components/PageHeader';
 import usePosts from '../hooks/usePosts';
 import Spinner from '../../components/Spinner';
@@ -8,17 +8,24 @@ import Error from '../../components/Error';
 import AddNewPostButton from '../component/AddNewPostButton';
 import { useCurrentUser } from '../../users/provider/UserProvider';
 import ListComponent from '../component/ListComponent';
+import SearchIcon from '@mui/icons-material/Search';
+import useSearch from '../hooks/useSearch';
+import { useSearchParams } from 'react-router-dom';
+import SearchAndOrderComponent from '../component/searchAndOrder/SearchAndOrderComponent';
 
 export default function Posts() {
     const { postsData, isLoading, error, handleGetAllPosts, handleCommentLike, handleDeleteComment, handleUpdateComment, handleNewComment, handlePostLike, handleDeletePost } = usePosts();
     const [currentPage, setCurrentPage] = useState(1);
-    const [isList, setIsList] = useState(false)
+    const { isList, handleToggle, parameter, handleParameter, handleSearch } = useSearch();
     const itemPerPage = isList ? 10 : 3;
     const indexOfLastItem = currentPage * itemPerPage;
     const indexOfFirstItem = indexOfLastItem - itemPerPage;
     const { user } = useCurrentUser();
+    const [searchParams] = useSearchParams();
+    const query = searchParams.get('query' || '');
 
-    const currentItem = postsData.slice(indexOfFirstItem, indexOfLastItem);
+    const searchPosts = query ? handleSearch(parameter, postsData, query) : postsData;
+    const currentItem = searchPosts.slice(indexOfFirstItem, indexOfLastItem);
 
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
@@ -35,10 +42,7 @@ export default function Posts() {
     if (postsData) return (
         <Box>
             <PageHeader title='Posts' subtitle='All posts at one place' />
-            <FormControlLabel
-                control={<Switch onClick={() => { setIsList((p) => !p) }} />}
-                label={isList ? 'Posts' : 'List'}
-            />
+            <SearchAndOrderComponent isList={isList} handleToggle={handleToggle} handleParameter={handleParameter} parameter={parameter} />
             <Box sx={{ display: 'flex', flexDirection: isList ? 'row' : 'column', flexWrap: isList ? 'wrap' : 'nowrap' }}>
                 {isList ? currentItem.map((post) => <ListComponent handleDeletePost={handleDeletePost} handleLikePost={handlePostLike} post={post} key={post._id} />) : currentItem.map((post) => <PostsComponent handleDeleteComment={handleDeleteComment} handleLikeComment={handleCommentLike} handleEditComment={handleUpdateComment} handleNewComment={handleNewComment} handleDeletePost={handleDeletePost} handleLikePost={handlePostLike} post={post} key={post._id} />)}
             </Box>
