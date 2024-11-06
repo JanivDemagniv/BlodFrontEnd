@@ -17,7 +17,7 @@ export default function LikedPosts() {
     const { postsData, isLoading, error, handleGetAllPosts, handleCommentLike, handleDeleteComment, handleUpdateComment, handleNewComment, handlePostLike, handleDeletePost } = usePosts();
     const { isList, handleToggle, parameter, handleParameter, handleSearch } = useSearch();
     const [currentPage, setCurrentPage] = useState(1);
-    const itemPerPage = 3;
+    const itemPerPage = isList ? 10 : 3;
     const indexOfLastItem = currentPage * itemPerPage;
     const indexOfFirstItem = indexOfLastItem - itemPerPage;
     const { user } = useCurrentUser();
