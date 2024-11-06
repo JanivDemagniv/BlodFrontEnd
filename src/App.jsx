@@ -6,6 +6,7 @@ import CustomTheme from './providers/CustomTheme'
 import Router from './routes/Router'
 import SnackBarProvider from './providers/SnackBarProvider';
 import UserProvider from './users/provider/UserProvider';
+import LogCheckProvider from './providers/LogCheckProvider';
 
 function App() {
 
@@ -15,9 +16,11 @@ function App() {
         <CustomTheme>
           <SnackBarProvider>
             <UserProvider>
-              <Layout>
-                <Router />
-              </Layout>
+              <LogCheckProvider>
+                <Layout>
+                  <Router />
+                </Layout>
+              </LogCheckProvider>
             </UserProvider>
           </SnackBarProvider>
         </CustomTheme>
