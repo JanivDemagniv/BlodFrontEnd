@@ -15,6 +15,7 @@ export default function LeftNavBar() {
             {user ? <NavBarItem to={ROUTES.LIKEDPOSTS}>Favourite Posts</NavBarItem> : null}
             {user && user.isCreator ? <NavBarItem to={ROUTES.MYPOSTS}>My Posts</NavBarItem> : null}
             {user && user.isAdmin ? <NavBarItem to={ROUTES.CRM}>CRM</NavBarItem> : null}
+            {user && user.isAdmin ? <NavBarItem to={ROUTES.POSTSCRM}>Posts Insights</NavBarItem> : null}
         </Box>
     )
 }

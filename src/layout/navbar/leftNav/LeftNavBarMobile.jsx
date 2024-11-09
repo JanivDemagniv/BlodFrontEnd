@@ -51,6 +51,7 @@ export default function LeftNavBarMobile() {
                 {user ? <MenuItem><NavBarItem to={ROUTES.LIKEDPOSTS}>Favourite Posts</NavBarItem></MenuItem> : null}
                 {user && user.isCreator || user && user.isAdmin ? <MenuItem><NavBarItem to={ROUTES.MYPOSTS}>My Posts</NavBarItem></MenuItem> : null}
                 {user && user.isAdmin ? <MenuItem><NavBarItem to={ROUTES.CRM}>CRM</NavBarItem></MenuItem> : null}
+                {user && user.isAdmin ? <MenuItem><NavBarItem to={ROUTES.POSTSCRM}>Posts Insights</NavBarItem></MenuItem> : null}
                 {!user ? <Divider /> : null}
                 {!user ? <MenuItem><NavBarItem to={ROUTES.LOGIN}>Login</NavBarItem></MenuItem> : null}
                 {!user ? <MenuItem><NavBarItem to={ROUTES.SIGNUP}>Sign Up</NavBarItem></MenuItem> : null}
