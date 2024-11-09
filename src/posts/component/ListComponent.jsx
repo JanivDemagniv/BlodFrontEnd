@@ -17,7 +17,7 @@ export default function ListComponent({ post, handleDeletePost, handleLikePost }
                 <Box>
                     <ListContent post={post} />
                 </Box>
-                <ListActiveBar handleDelete={handleDeletePost} handleLike={handleLikePost} post={post} />
+                {handleDeletePost === undefined || handleLikePost === undefined ? null : <ListActiveBar handleDelete={handleDeletePost} handleLike={handleLikePost} post={post} />}
             </Box>
         </Box>
     )

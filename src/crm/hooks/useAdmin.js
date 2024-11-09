@@ -2,11 +2,13 @@ import { useCallback, useState } from "react"
 import { useSnack } from "../../providers/SnackBarProvider";
 import { deleteUser, getAllUsers, updateUserStatus } from "../services/mangementApiServices";
 import { normalizeUserToCrm } from "../helpers/normalizeUsers";
+import { getAllPosts } from "../../posts/services/postsApiServices";
 
 export default function useAdmin() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState();
     const [allUsers, setAllUsers] = useState();
+    const [posts, setPosts] = useState();
     const setSnack = useSnack();
 
     const handleGetAllUsers = useCallback(async () => {
@@ -60,6 +62,19 @@ export default function useAdmin() {
         setIsLoading(false);
     }, []);
 
+    const handleAdminPosts = useCallback(async () => {
+        setIsLoading(true)
+        try {
+            const posts = await getAllPosts();
+            setPosts(posts);
+            setSnack('success', 'Posts Information has been updated');
+        } catch (error) {
+            setError(error);
+            setSnack('error', error, message);
+        };
+        setIsLoading(false);
+    }, []);
 
-    return { handleGetAllUsers, handleUpdateStatus, handleDeleteUser, error, isLoading, allUsers }
+
+    return { handleGetAllUsers, handleUpdateStatus, handleDeleteUser, error, isLoading, allUsers, handleAdminPosts, posts }
 }

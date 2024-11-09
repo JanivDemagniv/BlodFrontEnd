@@ -11,7 +11,8 @@ const ROUTES = {
     MYPOSTS: '/myposts',
     MYPROFILE: '/myprofile',
     EDITPROFILE: '/editmyprofile',
-    CRM: '/crm'
+    CRM: '/crm',
+    POSTSCRM: '/postscrm'
 }
 
 export default ROUTES

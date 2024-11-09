@@ -14,6 +14,7 @@ import MyPosts from '../posts/pages/MyPosts'
 import UserDetails from '../users/pages/UserDetails'
 import EditProfilePage from '../users/pages/EditProfilePage'
 import CrmPage from '../crm/crmPage'
+import PostsInsights from '../crm/components/PostsInsights'
 
 export default function Router() {
     return (
@@ -31,6 +32,7 @@ export default function Router() {
             <Route path={ROUTES.MYPROFILE} element={<UserDetails />} />
             <Route path={ROUTES.EDITPROFILE} element={<EditProfilePage />} />
             <Route path={ROUTES.CRM} element={<CrmPage />} />
+            <Route path={ROUTES.POSTSCRM} element={<PostsInsights />} />
             <Route path='*' element={<Error />} />
         </Routes>
     )
