@@ -32,14 +32,14 @@ export default function CommentContentComponent({ comment, user, handleLike, han
                 primary={comment.creator.name}
                 secondary={
                     <>
-                        <Paper component='div' sx={{ p: '2%', display: 'flex', flexDirection: 'column' }}>
+                        <Paper component='span' sx={{ p: '2%', display: 'flex', flexDirection: 'column' }}>
                             {comment.content}
                         </Paper>
                         <Typography variant='caption'>
                             {comment.createdAt}
                         </Typography>
                         <Divider component='li' />
-                        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                        <Box component='span' sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                             {user ? <IconButton onClick={() => { handleLikeColor(); handleLike(comment._id, comment.post) }} size='small'>
                                 <FavoriteIcon sx={{ color: isLike ? 'red' : 'white' }} fontSize="small" />
                             </IconButton> : null}

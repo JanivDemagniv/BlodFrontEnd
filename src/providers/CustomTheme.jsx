@@ -16,10 +16,10 @@ export default function CustomTheme({ children }) {
                 main: isDark ? '#607D8B' : '#ed6c02',
                 light: isDark ? '#90A4AE' : '#ff9800',
                 dark: isDark ? '#263238' : '#e65100',
-                contrastText: '#000',
+                contrastText: isDark ? '#fff' : '#000',
             },
             text: {
-                primary: '#000',
+                primary: isDark ? '#fff' : '#000',
                 secondary: '#f5f4f3'
             },
             background: {
