@@ -12,7 +12,8 @@ const ROUTES = {
     MYPROFILE: '/myprofile',
     EDITPROFILE: '/editmyprofile',
     CRM: '/crm',
-    POSTSCRM: '/postscrm'
+    POSTSCRM: '/postscrm',
+    JOINUS: 'joinus'
 }
 
 export default ROUTES

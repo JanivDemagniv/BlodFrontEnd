@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { Box, Button, Divider, Paper, Typography } from '@mui/material';
-import PageHeader from '../../components/PageHeader';
-import PostsComponent from '../../posts/component/PostsComponent'
-import usePosts from '../../posts/hooks/usePosts';
-import Spinner from '../../components/Spinner';
-import Error from '../../components/Error';
+import PageHeader from '../components/PageHeader';
+import PostsComponent from '../posts/component/PostsComponent'
+import usePosts from '../posts/hooks/usePosts';
+import Spinner from '../components/Spinner';
+import Error from '../components/Error';
 import { useNavigate } from 'react-router-dom';
-import ROUTES from '../../routes/routesModule';
-import { useCurrentUser } from '../../users/provider/UserProvider';
+import ROUTES from '../routes/routesModule';
+import { useCurrentUser } from '../users/provider/UserProvider';
 
 
 

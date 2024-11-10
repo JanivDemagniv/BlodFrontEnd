@@ -25,7 +25,7 @@ export default function Footer() {
                     <ListItemButton onClick={() => navigate(ROUTES.POSTS)}>
                         <ListItemText primary='Posts' />
                     </ListItemButton>
-                    <ListItemButton>
+                    <ListItemButton onClick={() => navigate(ROUTES.JOINUS)}>
                         <ListItemText primary='Join Us' />
                     </ListItemButton>
                 </List>
