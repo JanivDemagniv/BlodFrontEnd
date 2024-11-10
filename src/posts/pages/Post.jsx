@@ -25,8 +25,8 @@ export default function Post() {
         <Box sx={{ p: '2%', borderRadius: '2%' }}>
             <PageHeader title={postDetailsData.title} subtitle={postDetailsData.subtitle} />
             <Box sx={{ pl: '15px', display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: '2%' }}>
-                <Box>
-                    <Box component='img' src={postDetailsData.image.url} alt={postDetailsData.image.alt} sx={{ maxWidth: { xs: '150px', md: '400px' }, height: { xs: '150px', md: '400px' }, borderRadius: '5%' }} />
+                <Box sx={{ m: { xs: '0 auto', md: '0' } }}>
+                    <Box component='img' src={postDetailsData.image.url} alt={postDetailsData.image.alt} sx={{ maxWidth: { xs: '300px', md: '400px' }, height: { xs: '300px', md: '400px' }, borderRadius: '5%', m: { xs: '0 auto' } }} />
                     <CardHeader sx={{ mt: '5px', bgcolor: isDark ? '#90A4AE' : '#ff9800', borderRadius: '10px' }}
                         avatar={
                             <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe" src={postDetailsData.creator.image.url} alt={postDetailsData.creator.image.alt} />
