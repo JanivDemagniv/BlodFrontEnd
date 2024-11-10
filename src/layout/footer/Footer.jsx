@@ -3,6 +3,7 @@ import React from 'react'
 import { useTheme } from '../../providers/CustomTheme'
 import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../routes/routesModule';
+import SocialMedia from './compenent/SocialMedia';
 
 export default function Footer() {
     const { isDark } = useTheme();
@@ -35,6 +36,8 @@ export default function Footer() {
                         <ListItemText>
                             We love music—especially albums!<br />
                             Our passion drives us to bring you comprehensive reviews of albums across all genres, all in one place
+                            <br />
+                            <SocialMedia />
                         </ListItemText>
                     </ListItem>
                 </List>
