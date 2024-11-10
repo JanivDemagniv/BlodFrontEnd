@@ -14,7 +14,7 @@ export default function CommentContentComponent({ comment, user, handleLike, han
     };
 
     useEffect(() => {
-        if (user && comment.likes) { // Check if comment.likes is defined
+        if (user && comment.likes) {
             if (comment.likes.includes(user._id)) {
                 setIsLike(true);
             } else {
