@@ -18,7 +18,6 @@ export default function PostsInsights() {
         if (posts) {
             let sortedLikeArray = posts.toSorted((a, b) => a.likes.length < b.likes.length ? 1 : -1)
             setMostLike(sortedLikeArray);
-            console.log(mostLike);
 
             let sortedCommentArray = posts.toSorted((a, b) => a.comments.length < b.comments.length ? 1 : -1)
             setMostCommet(sortedCommentArray);

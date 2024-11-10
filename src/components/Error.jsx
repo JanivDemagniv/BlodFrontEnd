@@ -4,7 +4,6 @@ import ROUTES from "../routes/routesModule";
 
 const Error = ({ errorMessage }) => {
     const navigate = useNavigate();
-    console.log(errorMessage);
 
     return (
         <Container>
