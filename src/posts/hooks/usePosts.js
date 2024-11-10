@@ -160,6 +160,7 @@ export default function usePosts() {
             setPostsData((prevPosts) => {
                 return prevPosts.filter((post) => post._id !== id);
             });
+            navigate(ROUTES.POSTS)
         } catch (error) {
             setError(error);
             setSnack('error', error.message);

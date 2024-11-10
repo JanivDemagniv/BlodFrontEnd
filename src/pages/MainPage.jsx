@@ -62,6 +62,10 @@ export default function MainPage() {
                             So, What are you Wating For?
                         </Typography>
                         <Button onClick={() => navigate(ROUTES.SIGNUP)}>SignUp</Button>
+                        <Typography align='center'>
+                            Already registered?
+                        </Typography>
+                        <Button onClick={() => navigate(ROUTES.LOGIN)}>Login</Button>
                     </Box> : null}
                 </Box>
             </Box>

@@ -8,7 +8,7 @@ import ROUTES from '../../../routes/routesModule';
 import { useCurrentUser } from '../../../users/provider/UserProvider';
 import DeleteDialogComponent from './DeleteDialogComponent';
 
-export default function ActiveBarCompoenent({ post, handleDeletePost, handleLikePost }) {
+export default function ActiveBarCompoenent({ post, handleDeletePost, handleLikePost, singlePost = false }) {
     const [isLike, setIsLike] = useState(false);
     const { user } = useCurrentUser();
 
@@ -25,7 +25,7 @@ export default function ActiveBarCompoenent({ post, handleDeletePost, handleLike
                 setIsLike(false)
             }
         }
-    }, [])
+    }, [post, user])
 
     const navigate = useNavigate()
     return (
@@ -39,9 +39,9 @@ export default function ActiveBarCompoenent({ post, handleDeletePost, handleLike
                     <IconButton onClick={() => { handleLikeOnScreen(); handleLikePost(post._id) }} sx={{ color: 'white' }}>
                         <FavoriteIcon sx={{ color: isLike ? 'red' : 'white' }} />
                     </IconButton> : null}
-                <IconButton sx={{ color: 'white' }} onClick={() => { navigate(ROUTES.POSTINFO + '/' + post._id) }} aria-label='Article'>
+                {!singlePost ? <IconButton sx={{ color: 'white' }} onClick={() => { navigate(ROUTES.POSTINFO + '/' + post._id) }} aria-label='Article'>
                     <ArticleIcon />
-                </IconButton>
+                </IconButton> : null}
             </Box>
             <Box>
                 {user && user._id === post.creator._id && user.isCreator || user && user.isAdmin ?

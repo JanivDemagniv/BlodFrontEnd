@@ -10,7 +10,7 @@ export default function ListComponent({ post, handleDeletePost, handleLikePost }
     const { isDark } = useTheme()
 
     return (
-        <Box sx={{ flexShrink: 0, m: '10px auto', width: { xs: '100%', md: '47%' }, bgcolor: isDark ? '#607D8B' : '#ed6c02', borderRadius: '10px', p: '10px' }}>
+        <Box sx={{ flexShrink: 0, m: '10px auto', width: { xs: '95%', md: '47%' }, bgcolor: isDark ? '#607D8B' : '#ed6c02', borderRadius: '10px', p: '10px' }}>
             <ListHeader post={post} />
             <Box sx={{ display: 'flex' }}>
                 <ListImage post={post} />

@@ -7,10 +7,11 @@ import Spinner from '../../components/Spinner';
 import { capitalizeWords } from '../../helpers/generalFunctions';
 import PageHeader from '../../components/PageHeader';
 import { useTheme } from '../../providers/CustomTheme';
+import ActiveBarCompoenent from '../component/post/ActiveBarCompoenent';
 
 export default function Post() {
     const { id } = useParams()
-    const { isLoading, error, handleGetPostById, postDetailsData, handleCommentLike, handleDeleteComment, handleUpdateComment, handleNewComment } = usePosts();
+    const { isLoading, error, handleGetPostById, postDetailsData, handleCommentLike, handleDeleteComment, handleUpdateComment, handleNewComment, handlePostLike, handleDeletePost } = usePosts();
     const { isDark } = useTheme();
 
     useEffect(() => {
@@ -41,6 +42,9 @@ export default function Post() {
                         <div dangerouslySetInnerHTML={{ __html: postDetailsData.content }} />
                     </Paper>
                 </Box>
+            </Box>
+            <Box sx={{ m: '15px', bgcolor: isDark ? '#90A4AE' : '#ff9800', borderRadius: '5px' }}>
+                <ActiveBarCompoenent handleLikePost={handlePostLike} handleDeletePost={handleDeletePost} post={postDetailsData} singlePost={true} />
             </Box>
             <Box>
                 <CommentsComponent post={postDetailsData} expand={true} handleEdit={handleUpdateComment} handleLike={handleCommentLike} handleDelete={handleDeleteComment} handleNewComment={handleNewComment} />
