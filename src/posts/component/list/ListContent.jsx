@@ -12,7 +12,7 @@ export default function ListContent({ post }) {
         return div.innerText.substring(0, length);
     };
     return (
-        <Paper sx={{ p: '5px' }}>
+        <Paper component='div' sx={{ p: '5px' }}>
             <div>
                 {truncateContent(post.content, 300)}...
             </div>

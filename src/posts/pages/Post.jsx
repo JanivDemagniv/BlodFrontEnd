@@ -38,7 +38,7 @@ export default function Post() {
                 <Box sx={{ p: '2%' }}>
                     <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 'bold', textDecoration: 'underline' }}>{capitalizeWords(postDetailsData.album)}</Typography>
                     <Typography variant='h6' sx={{ fontSize: '1rem' }}>{capitalizeWords(postDetailsData.artist)}</Typography>
-                    <Paper sx={{ p: '2%', textAlign: 'justify' }}>
+                    <Paper component='div' sx={{ p: '2%', textAlign: 'justify' }}>
                         <div dangerouslySetInnerHTML={{ __html: postDetailsData.content }} />
                     </Paper>
                 </Box>

@@ -29,7 +29,7 @@ export default function ContentComponent({ post }) {
                 <Divider />
             </CardContent>
             <CardContent>
-                <Paper sx={{ marginBottom: 2, bgcolor: isDark ? '#4A6572' : '#FDD835', color: '#212121', p: '2%', fontFamily: 'Roboto', textAlign: 'justify' }}>
+                <Paper component='div' sx={{ marginBottom: 2, bgcolor: isDark ? '#4A6572' : '#FDD835', color: '#212121', p: '2%', fontFamily: 'Roboto', textAlign: 'justify' }}>
                     {isExpanded ? (
                         <div dangerouslySetInnerHTML={{ __html: post.content }} />
                     ) : (

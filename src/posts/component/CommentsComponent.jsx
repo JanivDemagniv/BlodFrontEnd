@@ -24,8 +24,8 @@ export default function CommentsComponent({ post, expand = false, handleLike, ha
                 <AccordionDetails>
                     <List sx={{ width: '100%', bgcolor: 'background.defult', color: '#000' }}>
                         {post.comments.map((comment) => <CommentContentComponent handleEdit={handleEdit} handleLike={handleLike} handleDelete={handleDelete} comment={comment} key={comment._id} user={user} />)}
+                        {user ? <CommentSectionComponent postId={post._id} handleNewComment={handleNewComment} /> : null}
                     </List>
-                    {user ? <CommentSectionComponent postId={post._id} handleNewComment={handleNewComment} /> : null}
                 </AccordionDetails>
             </Accordion>
 

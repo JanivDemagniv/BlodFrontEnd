@@ -24,7 +24,7 @@ export default function CommentContentComponent({ comment, user, handleLike, han
     }, [user, comment.likes]);
 
     return (
-        <ListItem alignItems="flex-start">
+        <ListItem component='div' alignItems="flex-start">
             <ListItemAvatar>
                 <Avatar alt={comment.creator.image.alt} src={comment.creator.image.url} />
             </ListItemAvatar>
@@ -32,13 +32,13 @@ export default function CommentContentComponent({ comment, user, handleLike, han
                 primary={comment.creator.name}
                 secondary={
                     <>
-                        <Paper sx={{ p: '2%', display: 'flex', flexDirection: 'column' }}>
+                        <Paper component='div' sx={{ p: '2%', display: 'flex', flexDirection: 'column' }}>
                             {comment.content}
                         </Paper>
                         <Typography variant='caption'>
                             {comment.createdAt}
                         </Typography>
-                        <Divider />
+                        <Divider component='li' />
                         <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                             {user ? <IconButton onClick={() => { handleLikeColor(); handleLike(comment._id, comment.post) }} size='small'>
                                 <FavoriteIcon sx={{ color: isLike ? 'red' : 'white' }} fontSize="small" />
@@ -53,7 +53,6 @@ export default function CommentContentComponent({ comment, user, handleLike, han
             />
             <Divider variant="inset" component="li" />
         </ListItem>
-
 
     )
 }

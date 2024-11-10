@@ -10,8 +10,8 @@ export default function About() {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <PageHeader title='About Us' subtitle='our story' />
-            <Paper sx={{ p: '10px', mb: '10px', width: { xs: '100%', md: '70%' } }}>
-                <Typography sx={{ whiteSpace: 'pre-line' }} dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, '<br/>') }} />
+            <Paper component='div' sx={{ p: '10px', mb: '10px', width: { xs: '100%', md: '70%' } }}>
+                <Typography component='div' sx={{ whiteSpace: 'pre-line' }} dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, '<br/>') }} />
             </Paper>
         </Box>
     )
