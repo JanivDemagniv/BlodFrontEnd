@@ -16,11 +16,12 @@ import EditProfilePage from '../users/pages/EditProfilePage'
 import CrmPage from '../crm/crmPage'
 import PostsInsights from '../crm/components/PostsInsights'
 import PostsCrmPage from '../crm/PostsCrmPage'
+import MainPage from '../layout/main/MainPage'
 
 export default function Router() {
     return (
         <Routes>
-            <Route path={ROUTES.ROOT} element={<Posts />} />
+            <Route path={ROUTES.ROOT} element={<MainPage />} />
             <Route path={ROUTES.ABOUT} element={<About />} />
             <Route path={ROUTES.POSTS} element={<Posts />} />
             <Route path={ROUTES.POSTINFO + '/:id'} element={<Post />} />
