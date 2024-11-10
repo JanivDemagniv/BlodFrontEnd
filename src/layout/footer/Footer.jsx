@@ -1,7 +1,7 @@
 import { Box, Container, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
 import React from 'react'
 import { useTheme } from '../../providers/CustomTheme'
-import { Route, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../routes/routesModule';
 
 export default function Footer() {
