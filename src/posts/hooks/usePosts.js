@@ -135,6 +135,7 @@ export default function usePosts() {
                     return post;
                 });
             });
+            setPostDetailsData(likedPost);
         } catch (error) {
             setError(error);
             setSnack('error', error.message);

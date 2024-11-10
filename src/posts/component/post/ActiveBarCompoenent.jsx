@@ -9,11 +9,12 @@ import { useCurrentUser } from '../../../users/provider/UserProvider';
 import DeleteDialogComponent from './DeleteDialogComponent';
 
 export default function ActiveBarCompoenent({ post, handleDeletePost, handleLikePost, singlePost = false }) {
-    const [isLike, setIsLike] = useState(false);
     const { user } = useCurrentUser();
+    const [isLike, setIsLike] = useState(user && post.likes.includes(user._id));
 
     const handleLikeOnScreen = () => {
         setIsLike((p) => !p);
+        handleLikePost(post._id);
     };
 
     useEffect(() => {
@@ -25,7 +26,7 @@ export default function ActiveBarCompoenent({ post, handleDeletePost, handleLike
                 setIsLike(false)
             }
         }
-    }, [post, user])
+    }, [post])
 
     const navigate = useNavigate()
     return (
@@ -36,7 +37,7 @@ export default function ActiveBarCompoenent({ post, handleDeletePost, handleLike
         }}>
             <Box>
                 {user ?
-                    <IconButton onClick={() => { handleLikeOnScreen(); handleLikePost(post._id) }} sx={{ color: 'white' }}>
+                    <IconButton onClick={() => { handleLikeOnScreen(); }} sx={{ color: 'white' }}>
                         <FavoriteIcon sx={{ color: isLike ? 'red' : 'white' }} />
                     </IconButton> : null}
                 {!singlePost ? <IconButton sx={{ color: 'white' }} onClick={() => { navigate(ROUTES.POSTINFO + '/' + post._id) }} aria-label='Article'>
