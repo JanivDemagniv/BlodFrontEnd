@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import { useSearchParams } from 'react-router-dom';
-import { Box, FormControl, InputAdornment, OutlinedInput } from '@mui/material';
+import { FormControl, InputAdornment, OutlinedInput } from '@mui/material';
 import { useTheme } from '../../../../providers/CustomTheme';
 
 
