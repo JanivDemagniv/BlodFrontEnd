@@ -7,8 +7,8 @@ import { DataGrid } from '@mui/x-data-grid';
 import ActionsButtons from './components/ActionsButtons';
 import { useTheme } from '../../providers/CustomTheme';
 
-export default function AllUsers() {
-    const { handleGetAllUsers, handleUpdateStatus, handleDeleteUser, error, isLoading, allUsers } = useAdmin();
+export default function AllUsers({ handleGetAllUsers, handleUpdateStatus, handleDeleteUser, error, isLoading, allUsers }) {
+    // const { handleGetAllUsers, handleUpdateStatus, handleDeleteUser, error, isLoading, allUsers } = useAdmin();
     const { isDark } = useTheme();
 
     const columns = [
@@ -45,9 +45,9 @@ export default function AllUsers() {
 
     const paginationModel = { page: 0, pageSize: 10 };
 
-    useEffect(() => {
-        handleGetAllUsers();
-    }, [])
+    // useEffect(() => {
+    //     handleGetAllUsers();
+    // }, [])
 
     if (isLoading) return <Spinner />
     if (error) return <Error errorMessage={error} />

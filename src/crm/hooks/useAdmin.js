@@ -51,8 +51,9 @@ export default function useAdmin() {
         setIsLoading(true);
         try {
             await deleteUser(userId);
-            setAllUsers((perv) => {
-                perv.filter((user) => { user._id === userId });
+            setAllUsers((prev) => {
+                const filteredUsers = prev.filter((user) => user.id !== userId);
+                return filteredUsers;
             });
             setSnack('success', 'User has been deleted')
         } catch (error) {
