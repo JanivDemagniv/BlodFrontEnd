@@ -1,4 +1,4 @@
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Grow, Paper, Typography } from '@mui/material';
 import React from 'react';
 import PageHeader from '../components/PageHeader';
 import AlbumIcon from '@mui/icons-material/Album';
@@ -12,13 +12,15 @@ export default function About() {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <PageHeader title='About Us' subtitle='our story' />
-            <Box sx={{ minHeight: '50vh', display: 'flex', justifyContent: 'center' }}>
-                <Paper component='div' sx={{ p: '10px', mb: '10px', width: { xs: '100%', md: '70%' } }}>
-                    <Typography component='div' sx={{ whiteSpace: 'pre-line' }} dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, '<br/>') }} />
+            <Grow in={true}>
+                <Box sx={{ minHeight: '50vh', display: 'flex', justifyContent: 'center' }}>
+                    <Paper component='div' sx={{ p: '10px', mb: '10px', width: { xs: '100%', md: '70%' } }}>
+                        <Typography component='div' sx={{ whiteSpace: 'pre-line' }} dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, '<br/>') }} />
 
-                    <AlbumIcon fontSize='large' />
-                </Paper>
-            </Box>
+                        <AlbumIcon fontSize='large' />
+                    </Paper>
+                </Box>
+            </Grow>
         </Box>
     )
 }

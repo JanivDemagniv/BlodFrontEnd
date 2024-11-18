@@ -1,4 +1,4 @@
-import { Button, CardContent, Divider, Paper, Typography } from '@mui/material'
+import { Button, CardContent, Divider, Grow, Paper, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useTheme } from '../../../providers/CustomTheme';
 import { capitalizeWords } from '../../../helpers/generalFunctions';
@@ -31,11 +31,15 @@ export default function ContentComponent({ post }) {
             <CardContent>
                 <Paper component='div' sx={{ marginBottom: 2, bgcolor: isDark ? '#4A6572' : '#FDD835', color: '#212121', p: '2%', fontFamily: 'Roboto', textAlign: 'justify' }}>
                     {isExpanded ? (
-                        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                        <Grow in={isExpanded}>
+                            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                        </Grow>
                     ) : (
-                        <div>
-                            {truncateContent(post.content, 300)}...
-                        </div>
+                        <Grow in={!isExpanded}>
+                            <div>
+                                {truncateContent(post.content, 300)}...
+                            </div>
+                        </Grow>
                     )}
                     <Button onClick={toggleMore}>{isExpanded ? 'Show Less' : 'Read More'}</Button>
                 </Paper>

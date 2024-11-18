@@ -15,14 +15,14 @@ import SearchAndOrderComponent from '../component/searchAndOrder/SearchAndOrderC
 
 export default function LikedPosts() {
     const { postsData, isLoading, error, handleGetAllPosts, handleCommentLike, handleDeleteComment, handleUpdateComment, handleNewComment, handlePostLike, handleDeletePost } = usePosts();
-    const { isList, handleToggle, parameter, handleParameter, handleSearch } = useSearch();
+    const { isList, handleToggle, parameter, handleParameter, handleSearch, checked } = useSearch();
     const [currentPage, setCurrentPage] = useState(1);
     const itemPerPage = isList ? 10 : 3;
     const indexOfLastItem = currentPage * itemPerPage;
     const indexOfFirstItem = indexOfLastItem - itemPerPage;
     const { user } = useCurrentUser();
     const [searchParams] = useSearchParams();
-    const query = searchParams.get('query' || '');
+    const query = searchParams.get('query') || '';
 
     const likedPosts = postsData.filter((post) => post.likes.includes(user._id));
     const searchPosts = query ? handleSearch(parameter, likedPosts, query) : likedPosts;
@@ -46,7 +46,27 @@ export default function LikedPosts() {
             <PageHeader title='Liked Posts' subtitle='All Posts I Liked' />
             <SearchAndOrderComponent isList={isList} handleToggle={handleToggle} handleParameter={handleParameter} parameter={parameter} />
             <Box sx={{ display: 'flex', flexDirection: isList ? 'row' : 'column', flexWrap: isList ? 'wrap' : 'nowrap' }}>
-                {isList ? currentItem.map((post) => <ListComponent handleDeletePost={handleDeletePost} handleLikePost={handlePostLike} post={post} key={post._id} />) : currentItem.map((post) => <PostsComponent handleDeleteComment={handleDeleteComment} handleLikeComment={handleCommentLike} handleEditComment={handleUpdateComment} handleNewComment={handleNewComment} handleDeletePost={handleDeletePost} handleLikePost={handlePostLike} post={post} key={post._id} />)}
+                {isList ? currentItem.map((post) => {
+                    return <ListComponent
+                        handleDeletePost={handleDeletePost}
+                        handleLikePost={handlePostLike}
+                        post={post}
+                        key={post._id}
+                        checked={checked}
+                    />
+                }) : currentItem.map((post) => {
+                    return <PostsComponent
+                        handleDeleteComment={handleDeleteComment}
+                        handleLikeComment={handleCommentLike}
+                        handleEditComment={handleUpdateComment}
+                        handleNewComment={handleNewComment}
+                        handleDeletePost={handleDeletePost}
+                        handleLikePost={handlePostLike}
+                        post={post}
+                        key={post._id}
+                        checked={checked}
+                    />
+                })}
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', p: '20px' }}>
                 <Pagination

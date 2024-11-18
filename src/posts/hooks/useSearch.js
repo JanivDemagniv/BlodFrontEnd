@@ -2,10 +2,12 @@ import { useState } from "react"
 
 export default function useSearch() {
     const [isList, setIsList] = useState(false);
+    const [checked, setChecked] = useState(false)
     const [parameter, setParameter] = useState('title');
 
     const handleToggle = () => {
-        setIsList(p => !p)
+        setIsList(p => !p);
+        setChecked((perv) => !perv);
     };
 
     const handleParameter = (e) => {
@@ -16,5 +18,6 @@ export default function useSearch() {
         return array.filter((post) => post[searchParameter]?.includes(query))
     }
 
-    return { isList, handleToggle, parameter, handleParameter, handleSearch }
+
+    return { isList, handleToggle, parameter, handleParameter, handleSearch, checked }
 }

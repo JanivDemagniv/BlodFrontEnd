@@ -54,7 +54,14 @@ export default function MainPage() {
                         </Paper></Box> : null}
                     <Typography>Latest Post:</Typography>
                     <Divider sx={{ width: '20%' }} />
-                    <PostsComponent post={latestPost[0]} handleDeleteComment={handleDeleteComment} handleDeletePost={handleDeletePost} handleEditComment={handleUpdateComment} handleLikeComment={handleCommentLike} handleLikePost={handlePostLike} handleNewComment={handleNewComment} />
+                    <PostsComponent
+                        post={latestPost[0]}
+                        handleDeleteComment={handleDeleteComment}
+                        handleDeletePost={handleDeletePost}
+                        handleEditComment={handleUpdateComment}
+                        handleLikeComment={handleCommentLike}
+                        handleLikePost={handlePostLike}
+                        handleNewComment={handleNewComment} />
                     <br />
                     <br />
                     {!user ? <Box sx={{ width: '50%', m: '10px auto', display: 'flex', flexDirection: 'column', alignContent: 'center' }}>

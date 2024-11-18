@@ -5,11 +5,11 @@ import ListOrPostToggle from './components/ListOrPostToggle';
 import SearchParameterSelect from './components/SearchParameterSelect';
 
 
-export default function SearchAndOrderComponent({ isList, handleToggle, parameter, handleParameter }) {
+export default function SearchAndOrderComponent({ isList, handleToggle, parameter, handleParameter, checked }) {
 
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
-            <ListOrPostToggle isList={isList} handleToggle={handleToggle} />
+            <ListOrPostToggle checked={checked} isList={isList} handleToggle={handleToggle} />
             <Box>
                 <SearchAera />
                 <SearchParameterSelect parameter={parameter} handleParameter={handleParameter} />
