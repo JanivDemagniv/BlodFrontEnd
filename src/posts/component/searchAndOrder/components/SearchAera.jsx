@@ -19,7 +19,7 @@ export default function SearchAera() {
     }, [query, setSearch]);
 
     const handleChange = (e) => {
-        setQuery(e.target.value)
+        setQuery(e.target.value.toLowerCase())
     }
 
 
